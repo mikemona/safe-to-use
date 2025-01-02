@@ -1,0 +1,44 @@
+.body {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+  gap: 24px;
+  padding: 16px 16px;
+  width: 100%;
+  padding-bottom: 86px;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+    width: 100%;
+
+    &-title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    &-description {
+      color: var(--text-info);
+      font-size: 16px;
+    }
+  }
+
+  &__body {
+    &-actions {
+      display: flex;
+      justify-content: space-between;
+
+      &_tools {
+        display: flex;
+        gap: 8px;
+      }
+      &_buttons {
+        display: flex;
+        gap: 8px;
+      }
+    }
+  }
+}

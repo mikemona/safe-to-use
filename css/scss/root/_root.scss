@@ -1,0 +1,48 @@
+@import "./palette/_palette.css";
+@import "../../fonts/_fonts.css";
+
+html,
+body {
+  margin: 0;
+  padding: 60px 0 0 0;
+  // overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: "Inter", sans-serif;
+  font-weight: 16px;
+  line-height: auto;
+  overflow-y: scroll; /* Enable scrolling */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+  /* For WebKit browsers like Chrome and Safari */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Change the highlight color */
+::selection {
+  background-color: var(--primary-ghost-hover); /* Highlight background color */
+  color: var(--text-white); /* Highlight text color */
+}
+
+/* For better cross-browser support, use this as well */
+::-moz-selection {
+  background-color: var(--primary-ghost-hover);
+  color: var(--text-white);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+div {
+  height: fit-content;
+  min-height: 0;
+}
+
+:root {
+  --border-radius: 10px;
+  --card-border-radius: 16px;
+}

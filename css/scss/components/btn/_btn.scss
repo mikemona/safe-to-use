@@ -1,0 +1,97 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  height: 32px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  padding: 4px 16px;
+  border: none;
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out, 0.2s ease-in-out;
+  font-family: "Inter", sans-serif;
+
+  &-primary {
+    background-color: var(--primary);
+    color: var(--text-dark);
+
+    &:hover {
+      background-color: var(--primary-hover);
+      color: var(--text-dark);
+    }
+
+    &:focus {
+      background-color: var(--primary-focus);
+      color: var(--text-dark);
+    }
+  }
+
+  &-ghost {
+    background-color: var(--primary-ghost);
+    color: var(--text-white);
+
+    &:hover {
+      background-color: var(--primary-ghost-hover);
+      color: var(--text-white);
+    }
+
+    &:focus {
+      background-color: var(--primary-ghost-focus);
+      color: var(--text-white);
+    }
+  }
+
+  &-link {
+    background-color: transparent;
+    color: var(--primary);
+    padding: 4px 4px;
+
+    &:hover {
+      color: var(--primary-hover);
+    }
+
+    &:focus {
+      color: var(--primary-focus);
+    }
+  }
+
+  &-check {
+    display: flex;
+    input {
+      display: none;
+    }
+
+    label {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      transition: background-color 0.3s ease, color 0.3s ease,
+        border-color 0.3s ease;
+
+      &:hover {
+        color: var(--primary);
+        background-color: var(--primary-ghost-hover);
+      }
+    }
+
+    // Style the label when the input is checked
+    input:checked + label {
+      background-color: var(
+        --primary
+      ); // Change to your desired checked background color
+      color: var(--text-dark);
+
+      &:hover {
+        background-color: var(--primary-hover);
+        color: var(--text-dark);
+      }
+    }
+  }
+}
+
+a {
+  position: relative;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+}
