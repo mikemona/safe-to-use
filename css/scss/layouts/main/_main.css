@@ -1,0 +1,1 @@
+.main{display:grid;grid-template-rows:auto 1fr;grid-template-columns:1fr;grid-template-areas:"header" "body" "nav";margin-top:109px}

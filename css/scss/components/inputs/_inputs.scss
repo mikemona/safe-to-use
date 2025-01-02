@@ -1,0 +1,16 @@
+@import "./search/_search.scss";
+
+textarea {
+  width: 100%;
+  min-height: 200px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--dark);
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: var(--dark);
+  color: var(--text-white);
+}
+
+textarea::placeholder {
+  color: var(--text-placeholder);
+}

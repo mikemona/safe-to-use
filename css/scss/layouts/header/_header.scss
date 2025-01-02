@@ -1,0 +1,28 @@
+.header {
+    grid-area: header;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(rgba(18, 23, 34) 33%, rgba(18, 23, 34, 0.5) 66%, rgba(18, 23, 34, 0.0)) !important; 
+    backdrop-filter: blur(10px); 
+    padding: 60px 16px 16px 16px;
+    z-index: 1000; /* Ensures it stays above other content */
+
+    &__left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+    }
+
+    &__page-title {
+        font-size: 20px;
+        font-family: "Playview", serif;
+        color: var(--primary);
+    }
+}

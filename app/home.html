@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/main.css" media="all" />
+    <script
+      src="https://kit.fontawesome.com/3d4c699bd6.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Ingredient Checker</title>
+    <style>
+      .result {
+        display: flex;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: transparent;
+        border-radius: var(--border-radius);
+      }
+    </style>
+  </head>
+  <body class="body">
+    <div class="body__header">
+      <div class="body__header-title">Ingredient Checker</div>
+      <div class="body__header-description">
+        this is a test for an ingredient checker
+      </div>
+    </div>
+    <div class="body__body">
+      <textarea
+        id="ingredientsInput"
+        placeholder="Enter ingredients separated by commas"
+      ></textarea>
+
+      <div class="body__body-actions">
+        <div class="body__body-actions_tools">
+          <button class="btn btn-ghost">
+            <i class="fa-solid fa-camera"></i>
+          </button>
+        </div>
+
+        <div class="body__body-actions_buttons">
+          <button class="btn btn-ghost">
+            <i class="fa-solid fa-rotate-left"></i>
+          </button>
+          <button class="btn btn-primary" onclick="checkIngredients()">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="results" class="result"></div>
+
+    <script>
+      const badIngredients = {
+        "sodium benzoate":
+          "Can form benzene, a known carcinogen, in acidic conditions.",
+        "high fructose corn syrup":
+          "Linked to obesity and increased risk of diabetes.",
+        aspartame:
+          "May cause headaches, dizziness, and potential long-term health risks.",
+        test: "testing.",
+      };
+
+      function checkIngredients() {
+        const input = document.getElementById("ingredientsInput").value;
+        const ingredients = input
+          .toLowerCase()
+          .split(",")
+          .map((i) => i.trim());
+        const results = document.getElementById("results");
+        results.innerHTML = "";
+
+        ingredients.forEach((ingredient) => {
+          if (badIngredients[ingredient]) {
+            const reason = badIngredients[ingredient];
+            results.innerHTML += `<p><span class="ingredient ingredient--bad">${ingredient}</span>: ${reason}</p>`;
+          }
+        });
+
+        if (!results.innerHTML) {
+          results.innerHTML = "<p>No bad ingredients found!</p>";
+        }
+      }
+    </script>
+  </body>
+</html>

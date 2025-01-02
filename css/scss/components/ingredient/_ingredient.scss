@@ -1,0 +1,6 @@
+.ingredient {
+    &--bad {
+        color: var(--error);
+        font-weight: 700;
+    }
+}
