@@ -24,6 +24,7 @@
     &:focus {
       background-color: var(--primary-focus);
       color: var(--text-dark);
+      box-shadow: var(--focus-shadow);
     }
   }
 
@@ -39,6 +40,7 @@
     &:focus {
       background-color: var(--primary-ghost-focus);
       color: var(--text-white);
+      box-shadow: var(--focus-shadow);
     }
   }
 
@@ -53,6 +55,7 @@
 
     &:focus {
       color: var(--primary-focus);
+      box-shadow: var(--focus-shadow);
     }
   }
 

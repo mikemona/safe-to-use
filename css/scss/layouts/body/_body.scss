@@ -6,18 +6,15 @@
   gap: 24px;
   padding: 16px 16px;
   width: 100%;
-  padding-bottom: 86px;
+  margin-bottom: 16px;
 
   &__header {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 16px;
     width: 100%;
 
     &-title {
       font-size: 24px;
       font-weight: 600;
+      margin-bottom: 16px;
     }
 
     &-description {
@@ -27,15 +24,25 @@
   }
 
   &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__form {
+    margin-bottom: 16px;
+    #ingredientsInput {
+      min-height: 350px;
+    }
     &-actions {
       display: flex;
       justify-content: space-between;
 
-      &_tools {
+      &-tools {
         display: flex;
         gap: 8px;
       }
-      &_buttons {
+      &-buttons {
         display: flex;
         gap: 8px;
       }

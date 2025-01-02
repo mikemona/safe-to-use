@@ -14,15 +14,18 @@
     z-index: 1000; /* Ensures it stays above other content */
 
     &__left {
+        max-width: 80%;
         display: flex;
         align-items: center;
         gap: 8px;
-
     }
 
     &__page-title {
         font-size: 20px;
-        font-family: "Playview", serif;
+        font-weight: 600;
         color: var(--primary);
+        overflow: hidden;
+        white-space:nowrap; 
+        text-overflow: ellipsis;
     }
 }

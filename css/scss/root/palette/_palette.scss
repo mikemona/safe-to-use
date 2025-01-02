@@ -8,10 +8,12 @@ $yellow-dark: darken($yellow, 20%); /* 20% darker */
   --text-dark: #20273b;
   --text-white: #ffffff;
   --text-info: #ffffffbf;
-  --text-placeholder: #656b7d;
+  --text-placeholder: #9ba4c7;
   --white: #ffffff;
+  --off-white: #f8f6ea;
   --dark: #20273b;
   --bg-dark: #121722;
+  --focus-shadow: 0 0 0 4px var(--primary-ghost);
 
   --primary: #bfc7e5;
   --primary-hover: #d2daef; /* 25% lighter */
@@ -25,7 +27,6 @@ $yellow-dark: darken($yellow, 20%); /* 20% darker */
   --yellow-light: #{$yellow-light};
   --yellow-dark: #{$yellow-dark};
   --red: #962e25;
-  --off-white: #f8f6ea;
 
   --success: #c1e9c3;
   --success-hover: #c1ffc4;
@@ -58,4 +59,8 @@ $yellow-dark: darken($yellow, 20%); /* 20% darker */
   --mixed: #ff9800;
   --mixed-hover: #fff3e0;
   --mixed-focus: #ffa726;
+}
+
+.dark-mode {
+
 }
