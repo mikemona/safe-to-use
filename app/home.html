@@ -39,17 +39,17 @@
         </div>
         <div class="body__form-actions">
           <div class="body__form-actions-tools">
-            <button class="btn btn-ghost" data-title="Use Camera">
+            <button class="btn btn-ghost" data-title="Use Camera" id="useCamera">
               <i class="fa-solid fa-camera"></i>
             </button>
           </div>
 
           <div class="body__form-actions-buttons">
-            <button class="btn btn-ghost" data-title="Clear Form">
+            <button class="btn btn-ghost" data-title="Clear Form" id="clearForm">
               <i class="fa-solid fa-rotate-left"></i>
             </button>
-            <button class="btn btn-primary" data-title="Submit" onclick="checkIngredients()">
-              Submit
+            <button class="btn btn-primary" data-title="Analyze" onclick="checkIngredients()">
+              Analyze
             </button>
           </div>
         </div>
@@ -69,7 +69,8 @@
         "May cause headaches, dizziness, and potential long-term health risks.",
       test: "testing.",
     };
-
+  
+    // Check ingredients function
     function checkIngredients() {
       const input = document.getElementById("ingredientsInput").value;
       const ingredients = input
@@ -78,17 +79,25 @@
         .map((i) => i.trim());
       const results = document.getElementById("results");
       results.innerHTML = "";
-
+  
       ingredients.forEach((ingredient) => {
         if (badIngredients[ingredient]) {
           const reason = badIngredients[ingredient];
           results.innerHTML += `<p><span class="ingredient ingredient--bad">${ingredient}</span>: ${reason}</p>`;
         }
       });
-
+  
       if (!results.innerHTML) {
         results.innerHTML = "<p>No bad ingredients found!</p>";
       }
     }
+  
+    // Clear Form button functionality
+    document.getElementById("clearForm").addEventListener("click", () => {
+      document.getElementById("ingredientsInput").value = ""; // Clears the textarea
+    });
+
+    results.scrollIntoView({ behavior: "smooth" });
   </script>
+  
 </html>
