@@ -1,6 +1,10 @@
 .ingredient {
-    &--bad {
-        color: var(--error);
-        font-weight: 700;
-    }
+  &-name {
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  &--bad {
+    color: var(--error);
+    font-weight: 700;
+  }
 }
