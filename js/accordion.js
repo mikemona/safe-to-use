@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const accordionHeaders = document.querySelectorAll(".accordion-header");
+  const accordionHeaders = document.querySelectorAll(".accordion-item__header");
 
   accordionHeaders.forEach((header) => {
     header.addEventListener("click", function () {

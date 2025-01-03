@@ -57,76 +57,98 @@ function checkIngredients() {
     .map((i) => i.trim());
 
   const results = document.getElementById("results");
-  results.innerHTML = "";
+  results.innerHTML = ""; // Clear previous results
 
   const ingredientKeys = Object.keys(badIngredients);
 
+  let hasResults = false; // Track if there are any results to show
+
   ingredients.forEach((ingredient) => {
-    // Check against mapping
     const normalized = ingredientMapping[ingredient] || ingredient;
+    let title = "";
+    let content = "";
 
-    let headerHTML = "";
-    let contentHTML = "";
-
-    // Check exact match
     if (badIngredients[normalized]) {
       const reason = badIngredients[normalized];
-      headerHTML = `<span class="ingredient-name">${normalized}</span>`;
-      contentHTML = `<p>${reason}</p>`;
+      title = normalized;
+      content = reason;
     } else {
-      // Check for approximate matches
       const closestMatch = findClosestMatch(normalized, ingredientKeys);
       if (closestMatch) {
         const reason = badIngredients[closestMatch];
-        headerHTML = `<span class="ingredient-name">${normalized}</span> <em>(did you mean <b>${closestMatch}</b>?)</em>`;
-        contentHTML = `<p>${reason}</p>`;
+        title = `${normalized} (did you mean ${closestMatch}?)`;
+        content = reason;
       }
     }
 
-    if (headerHTML && contentHTML) {
-      // Create the accordion item
+    if (title && content) {
+      hasResults = true;
+
+      // Create accordion item
       const accordionItem = document.createElement("div");
       accordionItem.classList.add("accordion-item");
 
-      // Create the accordion header
-      const accordionHeader = document.createElement("div");
-      accordionHeader.classList.add("accordion-header");
-      accordionHeader.innerHTML = `
-        ${headerHTML}
-        <button class="accordion-toggle">
-          <i class="fa-solid fa-chevron-down"></i>
-        </button>
+      // Accordion header
+      const header = document.createElement("div");
+      header.classList.add("accordion-item__header");
+      header.setAttribute("role", "button");
+      header.innerHTML = `
+        <div class="accordion-item__header-title">${title}</div>
+        <i class="fa-solid fa-angle-down"></i>
       `;
 
-      // Create the accordion content
-      const accordionContent = document.createElement("div");
-      accordionContent.classList.add("accordion-content");
-      accordionContent.innerHTML = contentHTML;
+      // Accordion content
+      const contentElement = document.createElement("div");
+      contentElement.classList.add("accordion-item__content");
+      contentElement.innerHTML = `<p>${content}</p>`;
+      contentElement.style.maxHeight = null; // Ensure content is initially collapsed
 
-      // Add click event to toggle the accordion
-      accordionHeader.addEventListener("click", () => {
-        accordionContent.classList.toggle("open");
-        const icon = accordionHeader.querySelector(".accordion-toggle i");
-        icon.classList.toggle("fa-chevron-down");
-        icon.classList.toggle("fa-chevron-up");
+      // Append header and content to accordion item
+      accordionItem.appendChild(header);
+      accordionItem.appendChild(contentElement);
+
+      // Add click toggle functionality to header
+      header.addEventListener("click", () => {
+        if (contentElement.style.maxHeight) {
+          contentElement.style.maxHeight = null; // Close the accordion
+        } else {
+          contentElement.style.maxHeight = `${contentElement.scrollHeight}px`; // Open the accordion
+        }
       });
 
-      // Append header and content to the accordion item
-      accordionItem.appendChild(accordionHeader);
-      accordionItem.appendChild(accordionContent);
-
-      // Append the accordion item to the results
+      // Append the accordion item to results
       results.appendChild(accordionItem);
     }
   });
 
-  if (!results.innerHTML) {
+  if (hasResults) {
+    results.style.display = "flex"; // Show the results section
+  } else {
     results.innerHTML = "<p>No bad ingredients found!</p>";
+    results.style.display = "block"; // Ensure the section is visible
   }
 
   // Scroll to the results section
   results.scrollIntoView({ behavior: "smooth" });
 }
+
+// Clear Form button functionality
+document.getElementById("clearForm").addEventListener("click", () => {
+  const ingredientsInput = document.getElementById("ingredientsInput");
+  if (ingredientsInput) {
+    ingredientsInput.value = ""; // Clear the input field
+  }
+
+  const results = document.getElementById("results");
+  if (results) {
+    results.style.display = "none"; // Hide the results section
+    results.innerHTML = ""; // Clear its content
+  }
+
+  // Scroll to the top of the page
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 
 // Clear Form button functionality
 document.getElementById("clearForm").addEventListener("click", () => {
