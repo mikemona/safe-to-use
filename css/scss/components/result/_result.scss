@@ -1,8 +1,7 @@
-.result {
+.results {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: var(--dark);
   border-radius: var(--border-radius);
   width: 100%;
 
@@ -10,11 +9,20 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
+    margin-bottom: 16px;
 
     &-title {
       margin: 0 8px 0 0;
       font-size: 18px;
+      font-weight: 600;
     }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 }

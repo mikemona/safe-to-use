@@ -139,7 +139,7 @@ document.getElementById("clearForm").addEventListener("click", () => {
     ingredientsInput.value = ""; // Clear the input field
   }
 
-  const results = document.getElementById("results");
+  const results = document.getElementById("result");
   if (results) {
     results.style.display = "none"; // Hide the results section
     results.innerHTML = ""; // Clear its content
@@ -158,7 +158,7 @@ document.getElementById("clearForm").addEventListener("click", () => {
   }
 
   // Clear the results
-  const results = document.getElementById("results");
+  const results = document.getElementById("result");
   if (results) {
     results.innerHTML = ""; // Clears the results content
   }
