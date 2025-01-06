@@ -2,6 +2,19 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background-color: transparent;
+  background-color: var(--dark);
   border-radius: var(--border-radius);
+  width: 100%;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+
+    &-title {
+      margin: 0 8px 0 0;
+      font-size: 18px;
+    }
+  }
 }

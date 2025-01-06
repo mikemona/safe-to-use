@@ -1,1 +1,7 @@
-.result{display:flex;flex-direction:column;gap:16px;background-color:rgba(0,0,0,0);border-radius:var(--border-radius)}
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: var(--border-radius);
+}
