@@ -25,6 +25,13 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       }
+
+      .fa-angle-down {
+        transition: transform 0.3s ease; /* Ensure smooth rotation */
+      }
+      .fa-angle-down.rotate {
+        transform: rotate(180deg); /* Rotate 180 degrees when open */
+      }
     }
 
     &__content {

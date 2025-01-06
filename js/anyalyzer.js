@@ -1,10 +1,22 @@
-let badIngredients = {};
+// Function to hide sections initially
+function initializePage() {
+  const resultsSection = document.getElementById("results");
+  const noResultsSection = document.getElementById("noResults");
 
-// Fetch bad ingredients from JSON file
+  // Ensure both sections are hidden initially
+  if (resultsSection) resultsSection.style.display = "none";
+  if (noResultsSection) noResultsSection.style.display = "none";
+}
+
+let badIngredients = {};
+let ingredientMappings = {};
+
+// Fetch bad ingredients and ingredient mappings from JSON file
 fetch("../data/badIngredients.json")
   .then((response) => response.json())
   .then((data) => {
-    badIngredients = data; // Store the fetched data in the badIngredients variable
+    badIngredients = data.ingredients; // Store ingredients with their descriptions
+    ingredientMappings = data.ingredientMappings; // Store ingredient abbreviations/variations
   })
   .catch((error) => console.error("Error fetching bad ingredients:", error));
 
@@ -40,44 +52,59 @@ function findClosestMatch(word, list, threshold = 2) {
   return closestMatch;
 }
 
-// Predefined mapping for common variations
-const ingredientMapping = {
-  hfcs: "high fructose corn syrup",
-  "high-fructose corn syrup": "high fructose corn syrup",
-  "sodium benzo": "sodium benzoate",
-};
+// Function to capitalize each word in a string
+function capitalizeWords(str) {
+  return str
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 
-// Function to check ingredients
+// Function to check and normalize ingredients
 function checkIngredients() {
   const input = document.getElementById("ingredientsInput").value;
   const ingredients = input
-    .toLowerCase()
+    .toLowerCase() // Normalize input to lowercase for matching purposes
     .replace(/[^\w\s,]/g, "") // Remove special characters
     .split(",")
     .map((i) => i.trim());
 
-  const results = document.getElementById("result");
-  results.innerHTML = ""; // Clear previous results
+  const resultsSection = document.getElementById("results");
+  const resultsContent = document.querySelector(".results__content");
+  const noResultsSection = document.getElementById("noResults");
+
+  // Hide both sections initially
+  resultsSection.style.display = "none";
+  noResultsSection.style.display = "none";
+
+  // Clear previous results
+  resultsContent.innerHTML = "";
+  noResultsSection.innerHTML = "";
 
   const ingredientKeys = Object.keys(badIngredients);
+  let hasResults = false;
 
-  let hasResults = false; // Track if there are any results to show
-
+  // Process ingredients
   ingredients.forEach((ingredient) => {
-    const normalized = ingredientMapping[ingredient] || ingredient;
+    // Check if the ingredient has a mapping (case insensitive)
+    const mappedIngredient = ingredientMappings[ingredient.toLowerCase()] || ingredient;
+
     let title = "";
     let content = "";
 
-    if (badIngredients[normalized]) {
-      const reason = badIngredients[normalized];
-      title = normalized;
-      content = reason;
+    // Case-insensitive search for exact match
+    const matchingKey = ingredientKeys.find(key => key.toLowerCase() === mappedIngredient.toLowerCase());
+
+    if (matchingKey) {
+      // Use the exact case from the JSON data
+      title = matchingKey;
+      content = badIngredients[matchingKey];
     } else {
-      const closestMatch = findClosestMatch(normalized, ingredientKeys);
+      // If no exact match, suggest closest match with "did you mean"
+      const closestMatch = findClosestMatch(mappedIngredient, ingredientKeys);
       if (closestMatch) {
-        const reason = badIngredients[closestMatch];
-        title = `${normalized} <em>(did you mean ${closestMatch}?)</em>`;
-        content = reason;
+        title = `${ingredient} (did you mean ${closestMatch}?)`;
+        content = badIngredients[closestMatch];
       }
     }
 
@@ -88,7 +115,6 @@ function checkIngredients() {
       const accordionItem = document.createElement("div");
       accordionItem.classList.add("accordion-item");
 
-      // Accordion header
       const header = document.createElement("div");
       header.classList.add("accordion-item__header");
       header.setAttribute("role", "button");
@@ -97,72 +123,69 @@ function checkIngredients() {
         <i class="fa-solid fa-angle-down"></i>
       `;
 
-      // Accordion content
       const contentElement = document.createElement("div");
       contentElement.classList.add("accordion-item__content");
       contentElement.innerHTML = `<p>${content}</p>`;
-      contentElement.style.maxHeight = null; // Ensure content is initially collapsed
+      contentElement.style.maxHeight = null;
 
       // Append header and content to accordion item
       accordionItem.appendChild(header);
       accordionItem.appendChild(contentElement);
 
-      // Add click toggle functionality to header
+      // Toggle accordion on click
       header.addEventListener("click", () => {
+        // Rotate icon on open/close
+        const icon = header.querySelector("i");
         if (contentElement.style.maxHeight) {
-          contentElement.style.maxHeight = null; // Close the accordion
+          contentElement.style.maxHeight = null; // Close accordion
+          icon.style.transform = "rotate(0deg)"; // Reset icon rotation
         } else {
-          contentElement.style.maxHeight = `${contentElement.scrollHeight}px`; // Open the accordion
+          contentElement.style.maxHeight = `${contentElement.scrollHeight}px`; // Open accordion
+          icon.style.transform = "rotate(180deg)"; // Rotate icon
         }
       });
 
-      // Append the accordion item to results
-      results.appendChild(accordionItem);
+      // Append to results content
+      resultsContent.appendChild(accordionItem);
     }
   });
 
   if (hasResults) {
-    results.style.display = "flex"; // Show the results section
-  } else {
-    results.innerHTML = "<p>No bad ingredients found!</p>";
-    results.style.display = "block"; // Ensure the section is visible
+    resultsSection.style.display = "block"; // Show results section
+    resultsSection.scrollIntoView({ behavior: "smooth" }); // Scroll to results
+  } else if (ingredients.length > 0 && ingredients[0] !== "") {
+    // Show "No Results Found" message in noResults section
+    noResultsSection.innerHTML = "<p>No bad ingredients found!</p>";
+    noResultsSection.style.display = "block"; // Show noResults section
+    noResultsSection.scrollIntoView({ behavior: "smooth" }); // Scroll to noResults
   }
-
-  // Scroll to the results section
-  results.scrollIntoView({ behavior: "smooth" });
 }
 
-// Clear Form button functionality
+
+
+// Clear form functionality
 document.getElementById("clearForm").addEventListener("click", () => {
   const ingredientsInput = document.getElementById("ingredientsInput");
+  const resultsSection = document.getElementById("results");
+  const resultsContent = document.querySelector(".results__content");
+  const noResultsSection = document.getElementById("noResults");
+
+  // Clear input field
   if (ingredientsInput) {
-    ingredientsInput.value = ""; // Clear the input field
+    ingredientsInput.value = "";
   }
 
-  const results = document.getElementById("result");
-  if (results) {
-    results.style.display = "none"; // Hide the results section
-    results.innerHTML = ""; // Clear its content
-  }
+  // Clear results content and no results section
+  resultsContent.innerHTML = "";
+  noResultsSection.innerHTML = "";
 
-  // Scroll to the top of the page
+  // Hide both sections
+  resultsSection.style.display = "none";
+  noResultsSection.style.display = "none";
+
+  // Scroll to top of page
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// Clear Form button functionality
-document.getElementById("clearForm").addEventListener("click", () => {
-  // Clear the textarea
-  const ingredientsInput = document.getElementById("ingredientsInput");
-  if (ingredientsInput) {
-    ingredientsInput.value = ""; // Clears the input field
-  }
-
-  // Clear the results
-  const results = document.getElementById("result");
-  if (results) {
-    results.innerHTML = ""; // Clears the results content
-  }
-
-  // Scroll to the top of the page
-  window.scrollTo({ top: 0, behavior: "smooth" });
-});
+// Call initializePage on page load
+document.addEventListener("DOMContentLoaded", initializePage);

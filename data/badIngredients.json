@@ -1,6 +1,13 @@
 {
-  "sodium benzoate": "Can form benzene, a known carcinogen, in acidic conditions.",
-  "high fructose corn syrup": "Linked to obesity and increased risk of diabetes.",
-  "aspartame": "May cause headaches, dizziness, and potential long-term health risks.",
-  "Test": "May cause headaches, dizziness, and potential long-term health risks."
+  "ingredientMappings": {
+    "hfcs": "high fructose corn syrup",
+    "high-fructose corn syrup": "high fructose corn syrup",
+    "sodium benzo": "sodium benzoate"
+  },
+  "ingredients": {
+    "sodium benzoate": "Can form benzene, a known carcinogen, in acidic conditions.",
+    "high fructose corn syrup": "Linked to obesity and increased risk of diabetes.",
+    "aspartame": "May cause headaches, dizziness, and potential long-term health risks.",
+    "Test": "May cause headaches, dizziness, and potential long-term health risks."
+  }
 }
