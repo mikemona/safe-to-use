@@ -56,7 +56,7 @@ function checkIngredients() {
     .split(",")
     .map((i) => i.trim());
 
-  const results = document.getElementById("results");
+  const results = document.getElementById("result");
   results.innerHTML = ""; // Clear previous results
 
   const ingredientKeys = Object.keys(badIngredients);
@@ -76,7 +76,7 @@ function checkIngredients() {
       const closestMatch = findClosestMatch(normalized, ingredientKeys);
       if (closestMatch) {
         const reason = badIngredients[closestMatch];
-        title = `${normalized} (did you mean ${closestMatch}?)`;
+        title = `${normalized} <em>(did you mean ${closestMatch}?)</em>`;
         content = reason;
       }
     }
@@ -148,7 +148,6 @@ document.getElementById("clearForm").addEventListener("click", () => {
   // Scroll to the top of the page
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
-
 
 // Clear Form button functionality
 document.getElementById("clearForm").addEventListener("click", () => {
