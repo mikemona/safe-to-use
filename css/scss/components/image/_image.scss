@@ -1,0 +1,13 @@
+.image {
+    &-preview {
+        &__container {
+            display: flex;
+            gap: 16px;
+            min-height: 300px;
+
+            img {
+                border-radius: var(--border-radius);
+            }
+        }
+    }
+}

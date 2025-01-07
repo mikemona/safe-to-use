@@ -2,10 +2,12 @@
 function initializePage() {
   const resultsSection = document.getElementById("results");
   const noResultsSection = document.getElementById("noResults");
+  const progressBar = document.getElementById("progressBar");
 
-  // Ensure both sections are hidden initially
+  // Hide sections initially
   if (resultsSection) resultsSection.style.display = "none";
   if (noResultsSection) noResultsSection.style.display = "none";
+  if (progressBar) progressBar.style.display = "none";
 }
 
 let badIngredients = {};
@@ -19,6 +21,18 @@ fetch("../data/badIngredients.json")
     ingredientMappings = data.ingredientMappings; // Store ingredient abbreviations/variations
   })
   .catch((error) => console.error("Error fetching bad ingredients:", error));
+
+// Function to analyze the text and handle ingredient mappings
+function analyzeText(ingredients) {
+  const mappedIngredients = ingredients.map((ingredient) => {
+    const trimmedIngredient = ingredient.trim(); // Trim whitespace
+    // Map ingredient using abbreviations/variations if available
+    return ingredientMappings[trimmedIngredient.toLowerCase()] || trimmedIngredient;
+  });
+
+  // Process the mapped ingredients and display results
+  displayResults(mappedIngredients);
+}
 
 // Utility function: Calculate Levenshtein Distance
 function getLevenshteinDistance(a, b) {
@@ -52,56 +66,39 @@ function findClosestMatch(word, list, threshold = 2) {
   return closestMatch;
 }
 
-// Function to capitalize each word in a string
-function capitalizeWords(str) {
-  return str
-    .split(" ")
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
+// Event listener for the Analyze button
+document.getElementById("analyzeText").addEventListener("click", (event) => {
+  event.preventDefault();
+  checkIngredients();
+});
 
-// Function to check and normalize ingredients
-function checkIngredients() {
-  const input = document.getElementById("ingredientsInput").value;
-  const ingredients = input
-    .toLowerCase() // Normalize input to lowercase for matching purposes
-    .replace(/[^\w\s,]/g, "") // Remove special characters
-    .split(",")
-    .map((i) => i.trim());
-
+// Function to display results in the results section
+function displayResults(ingredientsFound) {
   const resultsSection = document.getElementById("results");
   const resultsContent = document.querySelector(".results__content");
   const noResultsSection = document.getElementById("noResults");
 
-  // Hide both sections initially
-  resultsSection.style.display = "none";
-  noResultsSection.style.display = "none";
-
   // Clear previous results
-  resultsContent.innerHTML = "";
-  noResultsSection.innerHTML = "";
+  if (resultsContent) resultsContent.innerHTML = "";
 
-  const ingredientKeys = Object.keys(badIngredients);
   let hasResults = false;
 
-  // Process ingredients
-  ingredients.forEach((ingredient) => {
-    // Check if the ingredient has a mapping (case insensitive)
-    const mappedIngredient = ingredientMappings[ingredient.toLowerCase()] || ingredient;
-
+  // Process ingredients found in the input text
+  ingredientsFound.forEach((ingredient) => {
     let title = "";
     let content = "";
 
     // Case-insensitive search for exact match
-    const matchingKey = ingredientKeys.find(key => key.toLowerCase() === mappedIngredient.toLowerCase());
+    const matchingKey = Object.keys(badIngredients).find(
+      (key) => key.toLowerCase() === ingredient.toLowerCase()
+    );
 
     if (matchingKey) {
-      // Use the exact case from the JSON data
       title = matchingKey;
       content = badIngredients[matchingKey];
     } else {
-      // If no exact match, suggest closest match with "did you mean"
-      const closestMatch = findClosestMatch(mappedIngredient, ingredientKeys);
+      // Suggest closest match with "did you mean"
+      const closestMatch = findClosestMatch(ingredient, Object.keys(badIngredients));
       if (closestMatch) {
         title = `${ingredient} (did you mean ${closestMatch}?)`;
         content = badIngredients[closestMatch];
@@ -118,10 +115,9 @@ function checkIngredients() {
       const header = document.createElement("div");
       header.classList.add("accordion-item__header");
       header.setAttribute("role", "button");
-      header.innerHTML = `
-        <div class="accordion-item__header-title">${title}</div>
-        <i class="fa-solid fa-angle-down"></i>
-      `;
+      header.innerHTML = 
+        `<div class="accordion-item__header-title">${title}</div>
+        <i class="fa-solid fa-angle-down"></i>`;
 
       const contentElement = document.createElement("div");
       contentElement.classList.add("accordion-item__content");
@@ -134,7 +130,6 @@ function checkIngredients() {
 
       // Toggle accordion on click
       header.addEventListener("click", () => {
-        // Rotate icon on open/close
         const icon = header.querySelector("i");
         if (contentElement.style.maxHeight) {
           contentElement.style.maxHeight = null; // Close accordion
@@ -150,25 +145,28 @@ function checkIngredients() {
     }
   });
 
+  // Display results or no results section
   if (hasResults) {
-    resultsSection.style.display = "block"; // Show results section
-    resultsSection.scrollIntoView({ behavior: "smooth" }); // Scroll to results
-  } else if (ingredients.length > 0 && ingredients[0] !== "") {
-    // Show "No Results Found" message in noResults section
-    noResultsSection.innerHTML = "<p>No bad ingredients found!</p>";
-    noResultsSection.style.display = "block"; // Show noResults section
-    noResultsSection.scrollIntoView({ behavior: "smooth" }); // Scroll to noResults
+    if (resultsSection) resultsSection.style.display = "block"; // Show results section
+    if (resultsSection) resultsSection.scrollIntoView({ behavior: "smooth" }); // Scroll to results
+    if (noResultsSection) noResultsSection.style.display = "none"; // Hide noResults section
+  } else {
+    if (noResultsSection) {
+      noResultsSection.innerHTML = "<p>No bad ingredients were found!</p>";
+      noResultsSection.style.display = "block"; // Show noResults section
+      if (noResultsSection) noResultsSection.scrollIntoView({ behavior: "smooth" }); // Scroll to noResults
+    }
+    if (resultsSection) resultsSection.style.display = "none"; // Hide results section
   }
 }
 
-
-
-// Clear form functionality
-document.getElementById("clearForm").addEventListener("click", () => {
+// Function to handle form clearing
+function clearForm() {
   const ingredientsInput = document.getElementById("ingredientsInput");
   const resultsSection = document.getElementById("results");
   const resultsContent = document.querySelector(".results__content");
   const noResultsSection = document.getElementById("noResults");
+  const progressBar = document.getElementById("progressBar");
 
   // Clear input field
   if (ingredientsInput) {
@@ -176,16 +174,31 @@ document.getElementById("clearForm").addEventListener("click", () => {
   }
 
   // Clear results content and no results section
-  resultsContent.innerHTML = "";
-  noResultsSection.innerHTML = "";
+  if (resultsContent) resultsContent.innerHTML = "";
+  if (noResultsSection) noResultsSection.innerHTML = "";
 
   // Hide both sections
-  resultsSection.style.display = "none";
-  noResultsSection.style.display = "none";
+  if (resultsSection) resultsSection.style.display = "none";
+  if (noResultsSection) noResultsSection.style.display = "none";
+  if (progressBar) progressBar.style.display = "none";
 
   // Scroll to top of page
   window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// Event listener for the Analyze button
+document.querySelector("[data-title='Analyze']").addEventListener("click", (event) => {
+  event.preventDefault();
+  const ingredientsInput = document.getElementById("ingredientsInput");
+  if (ingredientsInput && ingredientsInput.value) {
+    // Get ingredients from input and analyze them
+    const ingredients = ingredientsInput.value.split(",").map((item) => item.trim());
+    analyzeText(ingredients); // Use the analyzeText function to process the input
+  }
 });
+
+// Event listener for the Clear Form button
+document.getElementById("clearForm").addEventListener("click", clearForm);
 
 // Call initializePage on page load
 document.addEventListener("DOMContentLoaded", initializePage);

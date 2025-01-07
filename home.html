@@ -8,6 +8,8 @@
       src="https://kit.fontawesome.com/3d4c699bd6.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0-beta.4/dist/tesseract.min.js"></script>
+
     <title>Ingredient Checker</title>
   </head>
   <body class="">
@@ -31,7 +33,7 @@
           </div>
         </div>
         <div class="body__form">
-          <div class="form-element required">
+          <div class="form-element required" id="typeIngredients">
             <label for="ingredientsInput" class="visually-hidden"
               >Ingredients</label
             >
@@ -41,6 +43,20 @@
             ></textarea>
             <div class="invalid-feedback">This is a required field</div>
           </div>
+          <!-- Add a hidden file input for camera capture -->
+<input
+type="file"
+id="cameraInput"
+accept="image/*"
+capture="environment"
+style="display: none;"
+/>
+
+          <!-- Preview Container -->
+          <div id="imagePreviewContainer" class="image-preview__container">
+            <img id="imagePreview" src="" alt="Image Preview" style="max-width: 200px; height: auto;">
+          </div>
+
           <div class="body__form-actions">
             <div class="body__form-actions-tools">
               <button
@@ -63,13 +79,22 @@
               <button
                 class="btn btn-primary"
                 data-title="Analyze"
-                onclick="checkIngredients()"
+                id="analyzeText"
               >
                 Analyze
               </button>
             </div>
           </div>
         </div>
+
+<!-- Progress Bar -->
+<div id="progressContainer" >
+  <progress id="progressBar" value="0" max="100"></progress>
+</div>
+
+<!-- No results section -->
+<div id="noResults"></div>
+
         <div id="results" class="results">
           <div class="results__header">
             <div class="results__header-title">Results</div>
@@ -83,7 +108,6 @@
           </div>
           <div class="results__content"></div>
         </div>
-        <div id="noResults"></div>
 
         <!-- <div class="accordion-item">
           <div role="button" class="accordion-item__header">
@@ -107,7 +131,8 @@
       </div>
     </main>
   </body>
-
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0/dist/tesseract.min.js"></script>
   <script src="js/anyalyzer.js"></script>
+  <script src="js/usecamera.js"></script>
   <script src="js/accordion.js"></script>
 </html>
