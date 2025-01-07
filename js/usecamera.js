@@ -48,7 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Change the functionality of the Analyze button when an image is uploaded
     analyzeButton.addEventListener("click", () => {
       if (imagePreviewContainer.style.display === "block") {
-        alert("Analyzing the uploaded image...");
   
         // Show progress bar
         if (progressContainer) progressContainer.style.display = "block";
@@ -82,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
           if (resultsSection) resultsSection.innerHTML = `<p>There was an error scanning the image. Please try again.</p>`;
         });
       } else {
-        alert("Analyzing the entered text...");
         // Add your text analysis logic here
       }
     });
