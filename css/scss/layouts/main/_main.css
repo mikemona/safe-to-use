@@ -1,1 +1,1 @@
-.main{display:grid;grid-template-rows:auto 1fr;grid-template-columns:1fr;grid-template-areas:"header" "body" "nav"}
+.main{display:grid;grid-template-rows:auto 1fr;grid-template-columns:1fr;grid-template-areas:"header" "body" "actions"}

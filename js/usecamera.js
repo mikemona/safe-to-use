@@ -47,43 +47,53 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Change the functionality of the Analyze button when an image is uploaded
     analyzeButton.addEventListener("click", () => {
-      if (imagePreviewContainer.style.display === "block") {
-  
-        // Show progress bar
-        if (progressContainer) progressContainer.style.display = "block";
-        if (progressBar) progressBar.value = 0;
-  
-        // Start OCR process
-        Tesseract.recognize(
-          imagePreview.src,
-          'eng',
-          {
-            logger: (m) => {
-              if (m.status === "recognizing text") {
-                // Update progress bar with current progress
-                if (progressBar) progressBar.value = m.progress * 100;
+        if (imagePreviewContainer.style.display === "block") {
+          // Show progress container and reset progress bar
+          if (progressContainer) {
+            progressContainer.style.display = "block"; // Make progress container visible
+          }
+          if (progressBar) {
+            progressBar.value = 0; // Reset the progress bar value
+          }
+      
+          // Start OCR process
+          Tesseract.recognize(
+            imagePreview.src,
+            'eng',
+            {
+              logger: (m) => {
+                if (m.status === "recognizing text") {
+                  // Update progress bar with current progress
+                  if (progressBar) {
+                    progressBar.value = m.progress * 100;
+                  }
+                }
               }
             }
-          }
-        )
-        .then(({ data: { text } }) => {
-          // Hide the progress bar
-          if (progressContainer) progressContainer.style.display = "none";
-  
-          // Process the extracted text
-          handleTextAnalysis(text);
-        })
-        .catch((error) => {
-          console.error("OCR error:", error);
-  
-          // Hide the progress bar and show error message
-          if (progressContainer) progressContainer.style.display = "none";
-          if (resultsSection) resultsSection.innerHTML = `<p>There was an error scanning the image. Please try again.</p>`;
-        });
-      } else {
-        // Add your text analysis logic here
-      }
-    });
+          )
+          .then(({ data: { text } }) => {
+            // Hide progress container after OCR completes
+            if (progressContainer) {
+              progressContainer.style.display = "none";
+            }
+      
+            // Process the extracted text
+            handleTextAnalysis(text);
+          })
+          .catch((error) => {
+            console.error("OCR error:", error);
+      
+            // Hide progress container and show error message
+            if (progressContainer) {
+              progressContainer.style.display = "none";
+            }
+            if (resultsSection) {
+              resultsSection.innerHTML = `<p>There was an error scanning the image. Please try again.</p>`;
+            }
+          });
+        }
+      });
+      
   
     // Event listener for the Clear Form button
     clearFormButton.addEventListener("click", (event) => {

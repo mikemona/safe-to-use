@@ -1,0 +1,26 @@
+.progress {
+    &-container {
+        display: block;
+        background-color: var(--primary-focus);
+        margin: 10px 0;
+        text-align: center;
+    }
+    &-bar {
+        background-color: var(--primary);
+        width: 100%;
+        height: 20px;
+
+        :indeterminate {
+            animation: indeterminate-animation 2s infinite linear;
+          }
+    }
+}
+
+@keyframes indeterminate-animation {
+    from {
+      background-position: -100% 0;
+    }
+    to {
+      background-position: 100% 0;
+    }
+  }

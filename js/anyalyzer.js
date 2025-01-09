@@ -24,52 +24,85 @@ fetch("../data/badIngredients.json")
 
 // Function to analyze the text and handle ingredient mappings
 function analyzeText(ingredients) {
-  const mappedIngredients = ingredients.map((ingredient) => {
+  return ingredients.map((ingredient) => {
     const trimmedIngredient = ingredient.trim(); // Trim whitespace
     // Map ingredient using abbreviations/variations if available
     return ingredientMappings[trimmedIngredient.toLowerCase()] || trimmedIngredient;
   });
-
-  // Process the mapped ingredients and display results
-  displayResults(mappedIngredients);
 }
 
-// Utility function: Calculate Levenshtein Distance
-function getLevenshteinDistance(a, b) {
-  const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
-  for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
-
-  for (let i = 1; i <= b.length; i++) {
-    for (let j = 1; j <= a.length; j++) {
-      matrix[i][j] =
-        b[i - 1] === a[j - 1]
-          ? matrix[i - 1][j - 1]
-          : Math.min(matrix[i - 1][j], matrix[i][j - 1], matrix[i - 1][j - 1]) +
-            1;
-    }
+// Function to handle the Analyze button's loading state
+function setAnalyzeButtonState(isAnalyzing) {
+  const analyzeButton = document.querySelector(".action-bar #analyzeText");
+  if (isAnalyzing) {
+    analyzeButton.disabled = true; // Disable the button
+    analyzeButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Analyzing...`; // Show spinner and text
+  } else {
+    analyzeButton.disabled = false; // Re-enable the button
+    analyzeButton.innerHTML = "Analyze"; // Reset text
   }
-  return matrix[b.length][a.length];
 }
 
-// Utility function: Find the closest match for a word
-function findClosestMatch(word, list, threshold = 2) {
-  let closestMatch = null;
-  let closestDistance = Infinity;
+// Function to add event listeners to buttons
+function attachEventListeners() {
+  const analyzeButton = document.querySelector(".action-bar #analyzeText");
+  const clearFormButton = document.querySelector(".action-bar #clearForm");
 
-  for (const item of list) {
-    const distance = getLevenshteinDistance(word, item);
-    if (distance < closestDistance && distance <= threshold) {
-      closestMatch = item;
-      closestDistance = distance;
-    }
+  if (analyzeButton) {
+    analyzeButton.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      const ingredientsInput = document.getElementById("ingredientsInput");
+      if (ingredientsInput && ingredientsInput.value) {
+        // Get ingredients from input
+        const ingredients = ingredientsInput.value.split(",").map((item) => item.trim());
+
+        // Set button state to analyzing
+        setAnalyzeButtonState(true);
+
+        // Simulate delay (e.g., for fetching data or processing input)
+        setTimeout(() => {
+          // Process the input and display results after delay
+          const mappedIngredients = analyzeText(ingredients);
+          displayResults(mappedIngredients); // Call displayResults only after delay
+
+          // Reset button state
+          setAnalyzeButtonState(false);
+
+          // Scroll to results after they are populated
+          const resultsSection = document.getElementById("results");
+          if (resultsSection) {
+            resultsSection.scrollIntoView({ behavior: "smooth" });
+          }
+        }, 2000); // Adjust delay duration as needed (2000ms = 2 seconds)
+      }
+    });
   }
-  return closestMatch;
+
+  if (clearFormButton) {
+    clearFormButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      clearForm();
+    });
+  }
 }
 
-// Event listener for the Analyze button
-document.getElementById("analyzeText").addEventListener("click", (event) => {
-  event.preventDefault();
-  checkIngredients();
+// Ensure buttons are accessible after DOM content is loaded
+document.addEventListener("DOMContentLoaded", () => {
+  initializePage();
+
+  // Wait for action-bar to be injected into the DOM
+  const observer = new MutationObserver((mutationsList, observer) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === "childList" && document.querySelector(".action-bar")) {
+        attachEventListeners();
+        observer.disconnect(); // Stop observing once buttons are found
+        break;
+      }
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
 });
 
 // Function to display results in the results section
@@ -185,20 +218,3 @@ function clearForm() {
   // Scroll to top of page
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
-
-// Event listener for the Analyze button
-document.querySelector("[data-title='Analyze']").addEventListener("click", (event) => {
-  event.preventDefault();
-  const ingredientsInput = document.getElementById("ingredientsInput");
-  if (ingredientsInput && ingredientsInput.value) {
-    // Get ingredients from input and analyze them
-    const ingredients = ingredientsInput.value.split(",").map((item) => item.trim());
-    analyzeText(ingredients); // Use the analyzeText function to process the input
-  }
-});
-
-// Event listener for the Clear Form button
-document.getElementById("clearForm").addEventListener("click", clearForm);
-
-// Call initializePage on page load
-document.addEventListener("DOMContentLoaded", initializePage);
