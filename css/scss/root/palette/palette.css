@@ -1,0 +1,55 @@
+/* 20% lighter */
+/* 20% darker */
+/* 20% lighter */
+/* 20% darker */
+:root {
+  --text-dark: #20273b;
+  --text-white: #ffffff;
+  --text-info: #ffffffbf;
+  --text-placeholder: #9ba4c7;
+  --border: #3d4459;
+  --white: #ffffff;
+  --off-white: #f8f6ea;
+  --dark: #20273b;
+  --dark-hover: #2a334b;
+  --dark-focus: #1b202e;
+  --bg-dark: #121722;
+  --focus-shadow: 0 0 0 4px var(--primary-ghost);
+  --primary: #bfc7e5;
+  --primary-hover: #d2daef; /* 25% lighter */
+  --primary-focus: #9ba4c7; /* 25% darker */
+  --primary-ghost: #3d4459;
+  --primary-ghost-hover: #656b7d;
+  --primary-ghost-focus: #2b2f3f;
+  --yellow: {$yellow};
+  --yellow-light: #edd8a1;
+  --yellow-dark: #a27f20;
+  --red: #962e25;
+  --blue: #3a5ddb;
+  --blue-light: #90a4eb;
+  --blue-dark: #1b3594;
+  --success: #c1e9c3;
+  --success-hover: #c1ffc4;
+  --success-focus: #80b883;
+  --success-ghost: #2b3c28; /* Darker, muted version */
+  --success-ghost-hover: #536f58; /* Lighter shade for hover */
+  --success-ghost-focus: #1f291e; /* Darker, more focused shade */
+  --warning: #eee2c0;
+  --warning-hover: #f9f6d1;
+  --warning-focus: #d6c693;
+  --warning-ghost: #4c4d31; /* Darker, muted version */
+  --warning-ghost-hover: #8c8f62; /* Lighter hover shade */
+  --warning-ghost-focus: #373c24; /* Darker focus shade */
+  --error: #f1bfbc;
+  --error-hover: #f9d0cd;
+  --error-focus: #e1a29b;
+  --error-ghost: #3b3233; /* Darker, muted version */
+  --error-ghost-hover: #735a5b; /* Lighter hover shade */
+  --error-ghost-focus: #2f2626; /* Darker, more focused shade */
+  --neutral: #9e9e9e;
+  --neutral-hover: #f5f5f5;
+  --neutral-focus: #bdbdbd;
+  --mixed: #ff9800;
+  --mixed-hover: #fff3e0;
+  --mixed-focus: #ffa726;
+}/*# sourceMappingURL=palette.css.map */

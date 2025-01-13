@@ -1,0 +1,160 @@
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.settings-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary);
+}
+.settings-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.settings-row {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+  background-color: var(--dark);
+  color: var(--text-white);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+.settings-row__body {
+  display: flex;
+  width: 100%;
+  margin-left: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.settings-row__body-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 8px 16px 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+}
+.settings-row__body-left_title {
+  font-size: 14px;
+  font-weight: 500;
+}
+.settings-row__body-left_description {
+  font-size: 12px;
+  color: var(--text-info);
+  display: -webkit-box; /* Required for -webkit-line-clamp */
+  -webkit-line-clamp: 2; /* Limit text to 2 lines */
+  -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Add "..." to indicate truncation */
+}
+.settings-row__body-input {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  min-height: 50px;
+  height: unset;
+  font-size: 14px;
+  padding: 16px;
+  gap: 8px;
+  max-width: 40%;
+}
+.settings-row__body-input i {
+  height: 100%;
+  align-content: center;
+  color: var(--primary);
+}
+.settings-row i {
+  height: 100%;
+  align-content: center;
+  color: var(--primary);
+}
+.settings-row:first-of-type {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.settings-row:last-of-type {
+  border-bottom: none;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+.settings-row:last-of-type .settings-row__body {
+  border-bottom: none;
+}
+.settings-row:only-of-type {
+  border-radius: var(--border-radius);
+}
+.settings-button {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 16px;
+  min-height: 50px;
+  background-color: var(--dark);
+  color: var(--text-white);
+  cursor: pointer;
+}
+.settings-button__body {
+  display: flex;
+  width: 100%;
+  margin-left: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.settings-button__body-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 8px 16px 0;
+  gap: 8px;
+  width: 100%;
+  height: auto;
+}
+.settings-button__body-left_title {
+  font-size: 14px;
+  font-weight: 500;
+}
+.settings-button__body-left_description {
+  font-size: 12px;
+  color: var(--text-info);
+  display: -webkit-box; /* Required for -webkit-line-clamp */
+  -webkit-line-clamp: 2; /* Limit text to 2 lines */
+  -webkit-box-orient: vertical; /* Set the box orientation to vertical */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Add "..." to indicate truncation */
+}
+.settings-button__body-input {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  min-height: 50px;
+  height: unset;
+  font-size: 14px;
+  padding: 16px;
+  gap: 8px;
+}
+.settings-button__body-input i {
+  height: 100%;
+  align-content: center;
+  color: var(--primary);
+}
+.settings-button i {
+  height: 100%;
+  align-content: center;
+  color: var(--primary);
+}
+.settings-button:hover {
+  background-color: var(--dark-hover);
+}
+.settings-button:focus {
+  background-color: var(--dark-focus);
+}
+.settings-button:first-of-type {
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+.settings-button:last-of-type {
+  border-bottom: none;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+.settings-button:last-of-type .settings-button__body {
+  border-bottom: none;
+}/*# sourceMappingURL=settings.css.map */

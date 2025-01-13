@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <link rel="stylesheet" href="css/main.css" media="all" />
     <script
       src="https://kit.fontawesome.com/3d4c699bd6.js"
@@ -16,7 +19,14 @@
     <main class="main">
       <header class="header">
         <div class="header__left">
-          <button id="backButton" class="btn btn-link backBTN"><i class="fa-solid fa-angle-left"></i></button>
+          <a
+            role="button"
+            id="backButton"
+            class="btn btn-link backBTN"
+            href="home.html"
+          >
+            <i class="fa-solid fa-angle-left"></i>
+          </a>
           <div class="header__page-title">Settings</div>
         </div>
         <!-- <div class="header__right">
@@ -26,62 +36,73 @@
         </div> -->
       </header>
       <div class="body">
-
         <div class="settings">
-            <div class="settings-title"> Section 1</div>
-            <div class="settings-wrapper">
-            <a class="settings-row">
-                <i class="fa-solid fa-list"></i>
-                <div class="settings-row__left">
-                    <div class="settings-row__left-title">My Lists</div>
+          <div class="settings-title">Tools</div>
+          <div class="settings-wrapper">
+            <a class="settings-button">
+              <i class="fa-solid fa-list"></i>
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">My Lists</div>
                 </div>
-                <div class="settings-row__input">
-                    <i class="fa-solid fa-angle-right"></i>
+                <div class="settings-button__body-input">
+                  <i class="fa-solid fa-angle-right"></i>
                 </div>
+              </div>
             </a>
-            <a class="settings-row">
-                <i class="fa-solid fa-camera"></i>
-                <div class="settings-row__left">
-                    <div class="settings-row__left-title">Setting 1
-                        <div class="settings-row__left-description">SOJFH ojshdf jbsd  sdk sdh hsdihs dis sh hd shd ihs d</div>
-                    </div>
+            <a class="settings-button" href="/settings/camera-settings.html">
+              <i class="fa-solid fa-camera"></i>
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">Camera</div>
                 </div>
-                <div class="settings-row__input">
-                    <i class="fa-solid fa-angle-right"></i>
+                <div class="settings-button__body-input">
+                  <i class="fa-solid fa-angle-right"></i>
                 </div>
+              </div>
             </a>
-            <a class="settings-row">
-                <i class="fa-solid fa-camera"></i>
-                <div class="settings-row__left">
-                    <div class="settings-row__left-title">Setting 1
-                        <div class="settings-row__left-description">SOJFH ojshdf jbsd  sdk sdh hsdihs dis sh hd shd ihs d</div>
-                    </div>
+            <a class="settings-button">
+              <i class="fa-solid fa-camera"></i>
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">Setting 1</div>
                 </div>
-                <div class="settings-row__input">
-                    <i class="fa-solid fa-angle-right"></i>
+                <div class="settings-button__body-input">
+                  <i class="fa-solid fa-angle-right"></i>
                 </div>
+              </div>
             </a>
-            </div>
+          </div>
         </div>
 
         <div class="settings">
-            <div class="settings__title"> Help & Support</div>
-            <div class="settings">
-                <a class="settings-row">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div class="settings-row__left-title">Contact Us</div>
-                    <div class="settings-row__input">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </a>
-                <a class="settings-row">
-                    <i class="fa-solid fa-circle-info"></i>
-                    <div class="settings-row__left-title">Help Center</div>
-                    <div class="settings-row__input">
-                        <i class="fa-solid fa-angle-right"></i>
-                    </div>
-                </a>
-            </div>
+          <div class="settings-title">Help & Support</div>
+          <div class="settings-wrapper">
+            <a class="settings-button">
+              <i class="fa-solid fa-envelope"></i>
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">Contact Us</div>
+                </div>
+                <div class="settings-button__body-input">
+                  <i class="fa-solid fa-angle-right"></i>
+                </div>
+              </div>
+            </a>
+            <a class="settings-button">
+              <i class="fa-solid fa-circle-info"></i>
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">
+                    Help Center
+                  </div>
+                </div>
+                <div class="settings-button__body-input">
+                  <i class="fa-solid fa-angle-right"></i>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
       <!-- <div id="actions-container"></div> -->
@@ -90,5 +111,5 @@
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0/dist/tesseract.min.js"></script>
   <script src="js/anyalyzer.js"></script>
   <script src="js/accordion.js"></script>
-  <script src="js/backBtn.js"></script>
+  <!-- <script src="js/backBtn.js"></script> -->
 </html>

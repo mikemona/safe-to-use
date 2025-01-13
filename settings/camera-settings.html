@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../css/main.css" media="all" />
+    <script
+      src="https://kit.fontawesome.com/3d4c699bd6.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0-beta.4/dist/tesseract.min.js"></script>
+
+    <title>Camera Settings - Ingredient Checker</title>
+  </head>
+  <body class="">
+    <main class="main">
+      <header class="header">
+        <div class="header__left">
+          <a
+            role="button"
+            id="backButton"
+            class="btn btn-link backBTN"
+            href="../settings.html"
+          >
+            <i class="fa-solid fa-angle-left"></i>
+          </a>
+          <div class="header__page-title">Camera</div>
+        </div>
+        <!-- <div class="header__right">
+          <a href="settings.html" id="menu" class="btn btn-ghost">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </div> -->
+      </header>
+      <div class="body">
+        <div class="settings">
+          <div class="settings-title">Camera Settings</div>
+          <div class="settings-wrapper">
+            <div class="settings-row">
+              <div class="settings-row__body">
+                <div class="settings-row__body-left">
+                  <div class="settings-row__body-left_title">Allow Access</div>
+                  <div class="settings-row__body-left_description">
+                    Allow access to your devices camera.
+                  </div>
+                </div>
+                <div class="settings-row__body-input">
+                  <label class="switch">
+                    <input type="checkbox" />
+                    <span class="slider round"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div id="actions-container"></div> -->
+    </main>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0/dist/tesseract.min.js"></script>
+  <script src="js/anyalyzer.js"></script>
+  <script src="js/accordion.js"></script>
+  <script src="js/backBtn.js"></script>
+</html>

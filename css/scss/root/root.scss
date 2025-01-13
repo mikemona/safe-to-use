@@ -1,0 +1,80 @@
+@import "./palette/palette.css";
+@import "../../fonts/_fonts.css";
+
+html {
+  margin: 0;
+  padding: 108px 0 0 0;
+  // overflow-x: hidden;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: "Inter", sans-serif;
+  font-weight: 16px;
+  line-height: auto;
+  overflow-y: scroll; /* Enable scrolling */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+
+  /* For WebKit browsers like Chrome and Safari */
+  &::-webkit-scrollbar {
+    // display: none;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+/* Change the highlight color */
+::selection {
+  background-color: var(--primary-ghost-hover); /* Highlight background color */
+  color: var(--text-white); /* Highlight text color */
+}
+
+/* For better cross-browser support, use this as well */
+::-moz-selection {
+  background-color: var(--primary-ghost-hover);
+  color: var(--text-white);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+div {
+  height: fit-content;
+  min-height: 0;
+}
+
+.visually-hidden {
+  display: none;
+}
+
+[data-title]:hover:after {
+  opacity: 1;
+  transition: all 0.2s ease 0.5s;
+  visibility: visible;
+}
+[data-title]:after {
+  content: attr(data-title);
+  background-color: var(--dark);
+  border-radius: 6px;
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 12px;
+  position: absolute;
+  padding: 8px 12px;
+  bottom: 110%;
+  // left: 0;
+  white-space: nowrap;
+  opacity: 0;
+  z-index: 99999;
+  visibility: hidden;
+}
+[data-title] {
+  position: relative;
+}
+
+:root {
+  --border-radius: 10px;
+  --card-border-radius: 16px;
+}

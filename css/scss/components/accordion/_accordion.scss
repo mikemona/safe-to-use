@@ -3,7 +3,7 @@
 
   &-item {
     background-color: var(--dark);
-    border-radius: var(--border-radius);
+    // border-radius: var(--border-radius);
 
     &__header {
       background-color: var(--dark);
@@ -16,18 +16,18 @@
       width: 100%;
       font-size: 16px;
       border-radius: var(--border-radius);
-  
+
       &-title {
-      max-width: 90%;
-      font-size: 14px;
-      font-weight: 500;
-      overflow: hidden; 
-      white-space: nowrap;
-      text-overflow: ellipsis;
+        max-width: 90%;
+        font-size: 14px;
+        font-weight: 500;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .fa-angle-down {
-        color: var(--primary);
+        color: var(--primary-ghost);
         transition: transform 0.3s ease; /* Ensure smooth rotation */
       }
       .fa-angle-down.rotate {
