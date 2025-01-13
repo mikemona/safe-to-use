@@ -39,30 +39,53 @@
         <div class="settings">
           <div class="settings-title">Camera Settings</div>
           <div class="settings-wrapper">
-            <div class="settings-row">
-              <div class="settings-row__body">
-                <div class="settings-row__body-left">
-                  <div class="settings-row__body-left_title">Allow Access</div>
-                  <div class="settings-row__body-left_description">
-                    Allow access to your devices camera.
+              <div class="settings-row">
+                  <div class="settings-row__body">
+                      <div class="settings-row__body-left">
+                          <div class="settings-row__body-left_title">Allow Access</div>
+                          <div class="settings-row__body-left_description">
+                              Allow access to your device's camera.
+                          </div>
+                      </div>
+                      <div class="settings-row__body-input">
+                          <label class="switch">
+                              <input type="checkbox" id="cameraToggle" />
+                              <span class="slider round"></span>
+                          </label>
+                      </div>
                   </div>
-                </div>
-                <div class="settings-row__body-input">
-                  <label class="switch">
-                    <input type="checkbox" />
-                    <span class="slider round"></span>
-                  </label>
-                </div>
               </div>
+          </div>
+      </div>
+      
+      </div>
+      
+      <div id="actions-container">
+        <div class="action-bar">
+          <div class="action-bar__actions">
+            <div class="action-bar__actions-buttons">
+              <button
+                class="btn btn-link"
+                data-title="Clear Form"
+                id="clearForm"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-primary"
+                data-title="Analyze"
+                id="analyzeText"
+              >
+                Save
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <!-- <div id="actions-container"></div> -->
     </main>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0/dist/tesseract.min.js"></script>
-  <script src="js/anyalyzer.js"></script>
-  <script src="js/accordion.js"></script>
-  <script src="js/backBtn.js"></script>
+  <script src="/js/anyalyzer.js"></script>
+  <script src="/js/accordion.js"></script>
+  <script src="/js/usecamera.js"></script>
 </html>
