@@ -1,0 +1,102 @@
+.settings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+        &-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        &-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        &-row {
+                display: flex;
+                align-items: center;
+                padding: 0 0 0 16px;
+                min-height: 50px;
+                background-color: var(--dark);
+                color: var(--text-white);
+                cursor: pointer;
+
+                &__left {
+                    width: 100%;
+
+                &-title {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-left: 16px;
+                    padding: 16px 0;
+                    font-size: 14px;
+                    gap: 8px;
+                    min-height: 50px;
+                    border-bottom: 1px solid var(--border);
+                }
+
+                &-description {
+                    font-size: 12px;
+                    color: var(--text-info);
+                    display: -webkit-box;           /* Required for -webkit-line-clamp */
+                    -webkit-line-clamp: 2;         /* Limit text to 2 lines */
+                    -webkit-box-orient: vertical;  /* Set the box orientation to vertical */
+                    overflow: hidden;              /* Hide overflowing text */
+                    text-overflow: ellipsis;       /* Add "..." to indicate truncation */
+                }
+            }
+
+                &__input {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    text-align: right;
+                    // min-height: 50px;
+                    // height: 100%;
+                    // font-size: 14px;
+                    padding: 16px;
+                    gap: 8px;
+                    border-bottom: 1px solid var(--border);
+
+                    i {
+                        color: var(--primary);
+                    }
+                }
+
+                i {
+                    color: var(--primary);
+                }
+
+                &:hover {
+                    background-color: var(--dark-hover);
+                }
+
+                &:focus {
+                    background-color: var(--dark-focus);
+                }
+                
+
+                &:first-of-type {
+                    border-radius: var(--border-radius) var(--border-radius) 0 0;
+                }
+
+                &:last-of-type {
+                    border-bottom: none;
+                    border-radius: 0 0 var(--border-radius) var(--border-radius);
+                    
+
+                    .settings-row__left-title {
+                        border-bottom: none;
+                    }
+                    
+                    .settings-row__input {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
