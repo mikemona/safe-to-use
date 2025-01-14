@@ -14,7 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0-beta.4/dist/tesseract.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>Camera Settings - Ingredient Checker</title>
+    <title>My Lists - Ingredient Checker</title>
   </head>
   <body class="">
     <main class="main">
@@ -28,34 +28,85 @@
           >
             <i class="fa-solid fa-angle-left"></i>
           </a>
-          <div class="header__page-title">Camera</div>
+          <div class="header__page-title">My Lists</div>
         </div>
-        <!-- <div class="header__right">
-          <a href="settings.html" id="menu" class="btn btn-ghost">
-            <i class="fa-solid fa-gear"></i>
+        <div class="header__right">
+          <a
+            href="settings.html"
+            id="menu"
+            class="btn btn-ghost"
+            data-title="Create New List"
+          >
+            <i class="fa-solid fa-plus"></i>
           </a>
-        </div> -->
+        </div>
       </header>
       <div class="body">
         <div class="settings">
-          <div class="settings-title">Camera Settings</div>
+          <!-- <div class="settings-title">Lists</div> -->
           <div class="settings-wrapper">
-            <div class="settings-row">
-              <div class="settings-row__body">
-                <div class="settings-row__body-left">
-                  <div class="settings-row__body-left_title">Allow Access</div>
-                  <div class="settings-row__body-left_description">
-                    Allow access to your device's camera.
+            <a class="settings-button" href="examplelist.html">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                />
+              </div>
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">
+                    Example List
                   </div>
                 </div>
-                <div class="settings-row__body-input">
-                  <label class="switch">
-                    <input type="checkbox" id="cameraToggle" />
-                    <span class="slider round"></span>
-                  </label>
+                <div class="settings-button__body-input">
+                  <i class="fa-solid fa-angle-right"></i>
                 </div>
               </div>
-            </div>
+            </a>
+            <a class="settings-button" href="list.html">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                />
+                <!-- <label class="form-check-label" for="flexRadioDefault1">
+                  Default radio
+                </label> -->
+              </div>
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">List Two</div>
+                </div>
+                <div class="settings-button__body-input">
+                  <i class="fa-solid fa-angle-right"></i>
+                </div>
+              </div>
+            </a>
+            <a class="settings-button">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault3"
+                />
+                <!-- <label class="form-check-label" for="flexRadioDefault1">
+                  Default radio
+                </label> -->
+              </div>
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">List Three</div>
+                </div>
+                <div class="settings-button__body-input">
+                  <i class="fa-solid fa-angle-right"></i>
+                </div>
+              </div>
+            </a>
           </div>
         </div>
       </div>

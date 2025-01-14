@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <link rel="stylesheet" href="css/main.css" media="all" />
     <script
       src="https://kit.fontawesome.com/3d4c699bd6.js"
@@ -44,13 +47,13 @@
             <div class="invalid-feedback">This is a required field</div>
           </div>
           <!-- Add a hidden file input for camera capture -->
-<input
-type="file"
-id="cameraInput"
-accept="image/*"
-capture="environment"
-style="display: none;"
-/>
+          <input
+            type="file"
+            id="cameraInput"
+            accept="image/*"
+            capture="environment"
+            style="display: none"
+          />
 
           <!-- Preview Container -->
           <!-- <div id="imagePreviewContainer" class="image-preview__container">
@@ -87,8 +90,8 @@ style="display: none;"
           </div> -->
         </div>
 
-<!-- No results section -->
-<div id="noResults"></div>
+        <!-- No results section -->
+        <div id="noResults"></div>
 
         <div id="results" class="results">
           <div class="results__header">
@@ -98,7 +101,7 @@ style="display: none;"
               data-title="Options"
               id="resultsOptions"
             >
-            <i class="fa-solid fa-ellipsis"></i>
+              <i class="fa-solid fa-ellipsis"></i>
             </button>
           </div>
           <div class="results__content" id=""></div>
@@ -124,8 +127,7 @@ style="display: none;"
           </div>
         </div> -->
       </div>
-      <div id="actions-container">
-      </div>
+      <div id="actions-container"></div>
     </main>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0/dist/tesseract.min.js"></script>

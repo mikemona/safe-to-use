@@ -1,0 +1,6 @@
+.main {
+  display: grid;
+  grid-template-rows: auto 1fr; /* Header height adjusts based on content, body takes remaining space */
+  grid-template-columns: 1fr; /* Single column */
+  grid-template-areas: "header" "body" "actions" "save";
+}/*# sourceMappingURL=main.css.map */

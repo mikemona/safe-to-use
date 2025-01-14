@@ -1,0 +1,25 @@
+.save-bar {
+  grid-area: save;
+  position: fixed;
+  display: flex;
+  gap: 8px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  max-width: 800px;
+  height: 70px;
+  background: linear-gradient(to top, rgb(18, 23, 34) 33%, rgba(18, 23, 34, 0.5) 66%, rgba(18, 23, 34, 0));
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Adjust spacing between groups */
+  align-items: center;
+  padding: 0 20px; /* Adjust padding for better spacing */
+  box-sizing: border-box;
+  z-index: 1000;
+}
+.save-bar button {
+  width: 100%;
+}/*# sourceMappingURL=save-bar.css.map */

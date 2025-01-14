@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="../css/main.css" media="all" />
+    <script
+      src="https://kit.fontawesome.com/3d4c699bd6.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0-beta.4/dist/tesseract.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>My Lists - Ingredient Checker</title>
+  </head>
+  <body class="">
+    <main class="main">
+      <header class="header">
+        <div class="header__left">
+          <a
+            role="button"
+            id="backButton"
+            class="btn btn-link backBTN"
+            href="my-lists.html"
+          >
+            <i class="fa-solid fa-angle-left"></i>
+          </a>
+          <div class="header__page-title">Example List</div>
+          <button id="editTitle" class="btn btn-link">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+        </div>
+        <div class="header__right">
+          <a
+            href="#"
+            id="openDrawer"
+            class="btn btn-ghost"
+            data-title="Create New List"
+          >
+            <i class="fa-solid fa-plus"></i>
+          </a>
+        </div>
+      </header>
+      <div class="body">
+        <div class="settings">
+          <!-- <div class="settings-title">Lists</div> -->
+          <div class="settings-wrapper">
+            <a class="settings-button" href="examplelist.html">
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">Item One</div>
+                  <div class="settings-button__body-left_description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </div>
+                </div>
+                <div class="settings-button__body-input top">
+                  <i class="fa-solid fa-pen"></i>
+                </div>
+              </div>
+            </a>
+            <a class="settings-button" href="list.html">
+              <div class="settings-button__body">
+                <div class="settings-button__body-left">
+                  <div class="settings-button__body-left_title">Item Two</div>
+                  <div class="settings-button__body-left_description">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </div>
+                </div>
+                <div class="settings-button__body-input top">
+                  <i class="fa-solid fa-pen"></i>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="save-bar" id="saveBar">
+        <button class="btn btn-link" data-title="Cancel" id="cancelBTN">
+          Cancel
+        </button>
+        <button class="btn btn-primary" data-title="Save" id="saveBTN">
+          Save
+        </button>
+      </div>
+    </main>
+    <div id="toastSuccess" class="toast toast--success">
+      Changes Saved Successfully
+    </div>
+
+    <div class="drawer-overlay" id="drawerOverlay">
+      <div class="drawer" id="drawer">
+        <div class="drawer-header">
+          <h2 class="drawer-header__title">Drawer Title</h2>
+          <button class="drawer-header__close" id="closeDrawer">&times;</button>
+        </div>
+        <div class="drawer-body">
+          <div class="settings-row">
+            <div class="settings-row__body settings-row__body--vert">
+              <div class="settings-row__body-left">
+                <div class="settings-row__body-left_title">Item Two</div>
+                <div class="settings-row__body-left_description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+              </div>
+              <div class="settings-row__body-input">
+                <div class="form-element">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Default input"
+                    aria-label="default input example"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row__body settings-row__body--vert">
+              <div class="settings-row__body-left">
+                <div class="settings-row__body-left_title">Item Two</div>
+                <div class="settings-row__body-left_description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+              </div>
+              <div class="settings-row__body-input">
+                <div class="form-element">
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="drawer-footer">
+          <button class="btn btn-link" id="cancelDrawer">Cancel</button>
+          <button class="btn btn-primary" id="saveDrawer">Save</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="/js/main.js"></script>
+  <script src="/js/accordion.js"></script>
+  <script src="/js/usecamera.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const openDrawerButton = document.getElementById("openDrawer");
+      const closeDrawerButton = document.getElementById("closeDrawer");
+      const cancelDrawerButton = document.getElementById("cancelDrawer");
+      const drawerOverlay = document.getElementById("drawerOverlay");
+      const drawer = document.getElementById("drawer");
+
+      function openDrawer() {
+        drawerOverlay.classList.add("open");
+        drawer.classList.add("open");
+      }
+
+      function closeDrawer() {
+        drawerOverlay.classList.remove("open");
+        drawer.classList.remove("open");
+      }
+
+      openDrawerButton.addEventListener("click", openDrawer);
+      closeDrawerButton.addEventListener("click", closeDrawer);
+      cancelDrawerButton.addEventListener("click", closeDrawer);
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      // Initially hide the save bar
+      $("#saveBar").hide();
+
+      // Show the save bar when any input changes
+      $("input").on("input change", function () {
+        $("#saveBar").show();
+      });
+
+      // Reset inputs and hide save bar on cancel
+      const initialInputStates = {};
+      $("input").each(function () {
+        const input = $(this);
+        const id = input.attr("id");
+        if (id) {
+          initialInputStates[id] = input.is(":checkbox")
+            ? input.prop("checked")
+            : input.val();
+        }
+      });
+
+      $("#cancelBTN").on("click", function () {
+        $("#saveBar").hide();
+        $("input").each(function () {
+          const input = $(this);
+          const id = input.attr("id");
+          if (id) {
+            if (input.is(":checkbox")) {
+              input.prop("checked", initialInputStates[id]);
+            } else {
+              input.val(initialInputStates[id]);
+            }
+          }
+        });
+      });
+
+      // Show toast on save
+      $("#saveBTN").on("click", function () {
+        $("#saveBar").hide();
+        const toast = $("#toastSuccess");
+        toast.addClass("show");
+
+        // Hide the toast after 3 seconds
+        setTimeout(function () {
+          toast.removeClass("show");
+        }, 3000);
+      });
+    });
+  </script>
+</html>

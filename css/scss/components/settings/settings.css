@@ -17,16 +17,27 @@
 .settings-row {
   display: flex;
   align-items: center;
+  padding: 0 0 0 16px;
   min-height: 50px;
   background-color: var(--dark);
   color: var(--text-white);
-  border-radius: var(--border-radius);
   cursor: pointer;
+}
+.settings-row .form-check-input {
+  align-content: center;
+  margin: 0 16px 0 0;
+  width: 16px;
+  height: 16px;
+}
+.settings-row i {
+  height: 100%;
+  align-content: center;
+  color: var(--primary);
+  margin-right: 16px;
 }
 .settings-row__body {
   display: flex;
   width: 100%;
-  margin-left: 16px;
   border-bottom: 1px solid var(--border);
 }
 .settings-row__body-left {
@@ -51,6 +62,26 @@
   overflow: hidden; /* Hide overflowing text */
   text-overflow: ellipsis; /* Add "..." to indicate truncation */
 }
+.settings-row__body-info {
+  display: flex;
+  text-align: right;
+  height: unset;
+  color: var(--primary-ghost-hover);
+  font-size: 14px;
+  gap: 8px;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.settings-row__body-info i {
+  height: 100%;
+  margin-right: 0;
+  align-content: center;
+  color: var(--primary-ghost-hover);
+}
+.settings-row__body-info i.active {
+  color: var(--blue);
+}
 .settings-row__body-input {
   display: flex;
   flex-direction: column;
@@ -60,12 +91,26 @@
   font-size: 14px;
   padding: 16px;
   gap: 8px;
-  max-width: 40%;
+}
+.settings-row__body-input .btn-link {
+  height: 100%;
+  margin-right: 0;
+  align-content: center;
+  color: var(--primary);
+  min-width: 0;
+  padding: 0;
 }
 .settings-row__body-input i {
   height: 100%;
+  margin-right: 0;
   align-content: center;
   color: var(--primary);
+}
+.settings-row__body-input .form-element {
+  margin: 0;
+}
+.settings-row__body--vert {
+  flex-direction: column;
 }
 .settings-row i {
   height: 100%;
@@ -94,10 +139,21 @@
   color: var(--text-white);
   cursor: pointer;
 }
+.settings-button .form-check-input {
+  align-content: center;
+  margin: 0 16px 0 0;
+  width: 16px;
+  height: 16px;
+}
+.settings-button i {
+  height: 100%;
+  align-content: center;
+  color: var(--primary);
+  margin-right: 16px;
+}
 .settings-button__body {
   display: flex;
   width: 100%;
-  margin-left: 16px;
   border-bottom: 1px solid var(--border);
 }
 .settings-button__body-left {
@@ -122,6 +178,26 @@
   overflow: hidden; /* Hide overflowing text */
   text-overflow: ellipsis; /* Add "..." to indicate truncation */
 }
+.settings-button__body-info {
+  display: flex;
+  text-align: right;
+  height: unset;
+  color: var(--primary-ghost-hover);
+  font-size: 14px;
+  gap: 8px;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.settings-button__body-info i {
+  height: 100%;
+  margin-right: 0;
+  align-content: center;
+  color: var(--primary-ghost-hover);
+}
+.settings-button__body-info i.active {
+  color: var(--blue);
+}
 .settings-button__body-input {
   display: flex;
   flex-direction: column;
@@ -132,14 +208,23 @@
   padding: 16px;
   gap: 8px;
 }
+.settings-button__body-input .btn-link {
+  height: 100%;
+  margin-right: 0;
+  align-content: center;
+  color: var(--primary);
+  min-width: 0;
+  padding: 0;
+}
 .settings-button__body-input i {
   height: 100%;
+  margin-right: 0;
   align-content: center;
   color: var(--primary);
 }
-.settings-button i {
-  height: 100%;
-  align-content: center;
+.settings-button__body-input.top i {
+  height: unset;
+  margin: 2px 0 0 0;
   color: var(--primary);
 }
 .settings-button:hover {

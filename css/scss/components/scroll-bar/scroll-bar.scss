@@ -1,0 +1,29 @@
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 12px; /* Adjust scrollbar width */
+  height: 12px; /* Adjust scrollbar height (horizontal scrollbars) */
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg-dark); /* Background of the scrollbar track */
+  padding: 1px; /* Padding around the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--dark); /* Color of the scrollbar thumb */
+  border-radius: 8px; /* Rounded corners for the thumb */
+  border: 2px solid var(--bg-dark); /* Creates a padding effect around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: lighten(
+    var(--dark),
+    10%
+  ); /* Slightly lighter thumb on hover */
+}
+
+::-webkit-scrollbar-corner {
+  background-color: var(
+    --bg-dark
+  ); /* Background for scrollbar corner in two-direction scroll */
+}

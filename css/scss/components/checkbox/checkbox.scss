@@ -1,0 +1,264 @@
+.checkbox {
+  &-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: 100%;
+
+    &__columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+
+      .btn-check {
+        flex: 0 0 48%; /* Adjust width for 2 columns */
+        display: flex;
+        align-items: center;
+
+        input {
+          display: none;
+        }
+
+        label {
+          width: 100%;
+          padding: 8px;
+          text-align: center;
+          background-color: transparent;
+          color: var(--primary);
+          border: 1px solid var(--primary);
+          transition: background-color 0.3s ease, color 0.3s ease,
+            border-color 0.3s ease;
+          cursor: pointer;
+
+          &:hover {
+            color: var(--primary);
+            background-color: var(--primary-ghost-hover);
+          }
+        }
+
+        &--positive {
+          label {
+            background-color: transparent;
+            color: var(--success);
+            border: 1px solid var(--success);
+            transition: background-color 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease;
+
+            &:hover {
+              color: var(--success);
+              background-color: var(--success-ghost-hover);
+            }
+          }
+
+          // Style the label when the input is checked
+          input:checked + label {
+            background-color: var(
+              --success
+            ); // Change to your desired checked background color
+            color: var(--text-dark);
+
+            &:hover {
+              background-color: var(--success-hover);
+              color: var(--text-dark);
+            }
+          }
+        }
+
+        &--negative {
+          label {
+            background-color: transparent;
+            color: var(--error);
+            border: 1px solid var(--error);
+            transition: background-color 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease;
+
+            &:hover {
+              color: var(--error);
+              background-color: var(--error-ghost-hover);
+            }
+          }
+
+          // Style the label when the input is checked
+          input:checked + label {
+            background-color: var(
+              --error
+            ); // Change to your desired checked background color
+            color: var(--text-dark);
+
+            &:hover {
+              background-color: var(--error-ghost-hover);
+              color: var(--text-dark);
+            }
+          }
+        }
+
+        &--neutral {
+          label {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            transition: background-color 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease;
+
+            &:hover {
+              color: var(--primary);
+              background-color: var(--primary-ghost-hover);
+            }
+          }
+
+          // Style the label when the input is checked
+          input:checked + label {
+            background-color: var(
+              --primary
+            ); // Change to your desired checked background color
+            color: var(--text-dark);
+
+            &:hover {
+              background-color: var(--primary-hover);
+              color: var(--text-dark);
+            }
+          }
+        }
+
+        &--mixed {
+          label {
+            background-color: transparent;
+            color: var(--warning);
+            border: 1px solid var(--warning);
+            transition: background-color 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease;
+
+            &:hover {
+              color: var(--warning);
+              background-color: var(--warning-ghost-hover);
+            }
+          }
+
+          // Style the label when the input is checked
+          input:checked + label {
+            background-color: var(
+              --warning
+            ); // Change to your desired checked background color
+            color: var(--text-dark);
+
+            &:hover {
+              background-color: var(--warning-hover);
+              color: var(--text-dark);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+
+  .form-check-input {
+    width: 20px; // Make the checkbox slightly larger
+    height: 20px; // Match the width for a square shape
+    appearance: none; // Remove default checkbox styles
+    border: 1px solid var(--primary); // Border color
+    border-radius: 4px; // Optional: rounded corners
+    background-color: var(--primary-ghost); // Default background color
+    position: relative; // Position for the checkmark
+
+    transition: background-color 0.3s ease, border-color 0.3s ease; // Smooth transition for the background and border
+
+    // Remove the default checkmark box
+    &::before {
+      content: ""; // No content here, we'll add Font Awesome check
+      display: none; // Hide any default box or checkmark that might appear
+      background-color: var(--primary-ghost-hover);
+    }
+
+    // When checked, apply the new background and checkmark styles
+    &:checked {
+      background-color: var(--primary); // Background color when checked
+      border-color: var(--primary); // Border color when checked
+
+      // Use Font Awesome checkmark
+      &::after {
+        content: "\f00c"; // Font Awesome checkmark code
+        font-family: "Font Awesome 6 Free"; // Font Awesome Free version
+        font-weight: 900; // Make sure to use solid style
+        position: absolute;
+        top: 2px;
+        left: 3px;
+        color: var(--text-dark); // Checkmark color
+        font-size: 12px; // Adjust size of the checkmark
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--primary-hover);
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: var(--primary-ghost-hover);
+    }
+
+    &:focus {
+      outline: none; // Optional: remove default outline
+    }
+  }
+
+  [type="radio"] {
+    width: 20px; // Make the checkbox slightly larger
+    height: 20px; // Match the width for a square shape
+    appearance: none; // Remove default checkbox styles
+    border: 1px solid var(--primary); // Border color
+    border-radius: 50px; // Optional: rounded corners
+    background-color: var(--primary-ghost); // Default background color
+    position: relative; // Position for the checkmark
+
+    transition: background-color 0.3s ease, border-color 0.3s ease; // Smooth transition for the background and border
+
+    // Remove the default checkmark box
+    &::before {
+      content: ""; // No content here, we'll add Font Awesome check
+      display: none; // Hide any default box or checkmark that might appear
+      background-color: var(--primary-ghost-hover);
+    }
+
+    // When checked, apply the new background and checkmark styles
+    &:checked {
+      background-color: var(--primary-ghost);
+      border: 5px solid var(--primary); // Border color when checked
+      transition: all 0.3s ease-in-out;
+
+      // Use Font Awesome checkmark
+      &::after {
+        content: ""; // Font Awesome checkmark code
+        display: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+        background-color: var(--primary-ghost);
+        border-color: var(--primary-hover);
+      }
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: var(--primary-ghost-hover);
+    }
+
+    &:focus {
+      outline: none; // Optional: remove default outline
+    }
+  }
+}
+
+.form-check-label {
+  margin-left: 6px; // Add some spacing between the checkbox and label
+  font-size: 16px; // Optional: adjust font size of the label
+
+  &:hover {
+    cursor: pointer;
+  }
+}

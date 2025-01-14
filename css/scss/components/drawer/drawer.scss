@@ -1,0 +1,117 @@
+.drawer {
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-overlay);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    z-index: 1000;
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .drawer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      min-height: 60vh;
+      max-height: 90vh; /* Ensures the drawer cannot grow beyond this */
+      background-color: var(--dark);
+      border-radius: 16px 16px 0 0;
+      box-shadow: 0 -4px 10px var(--bg-overlay);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease-in-out;
+      transform: translateY(100%);
+
+      &.open {
+        transform: translateY(0);
+      }
+
+      &-header {
+        padding: 16px;
+        flex-shrink: 0; /* Prevents the header from shrinking */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &__title {
+          font-size: 18px;
+          font-weight: bold;
+          margin: 0;
+        }
+
+        &__close {
+          background: none;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+          color: var(--primary-ghost);
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            color: var(--primary-ghost-hover);
+          }
+        }
+      }
+
+      &-body {
+        padding: 16px;
+        flex: 1; /* Allows the body to take up remaining space */
+        overflow-y: auto; /* Enables scrolling if content exceeds available height */
+        font-size: 14px;
+
+        .settings-row {
+          padding: 0;
+
+          &:first-of-type {
+            border-radius: 0;
+          }
+
+          &:last-of-type {
+            border-bottom: none;
+            border-radius: 0;
+
+            .settings-row__body {
+              border-bottom: none;
+            }
+          }
+
+          &:only-of-type {
+            border-radius: 0;
+          }
+        }
+
+        .settings-row__body.settings-row__body--vert {
+          padding: 8px;
+          .settings-row__body-left {
+            padding: 16px 0;
+          }
+
+          .settings-row__body-input {
+            padding: 16px 0;
+          }
+        }
+      }
+
+      &-footer {
+        padding: 16px;
+        flex-shrink: 0; /* Prevents the footer from shrinking */
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

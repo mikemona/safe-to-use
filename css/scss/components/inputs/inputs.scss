@@ -101,3 +101,60 @@ textarea:focus-visible {
     }
   }
 }
+
+.form-control {
+  min-height: 32px;
+  border-radius: var(--border-radius);
+  padding: 0 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  border: none;
+  background-color: var(--primary);
+  color: var(--text-dark);
+
+  &:hover {
+    background-color: var(--primary-hover);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-shadow);
+    outline: none;
+    outline-offset: 0;
+  }
+}
+
+.form-select {
+  min-height: 32px;
+  border-radius: var(--border-radius);
+  padding: 0 8px;
+  font-family: "Inter", sans-serif;
+  border: none;
+  background-color: var(--primary);
+  color: var(--text-dark);
+
+  &:hover {
+    background-color: var(--primary-hover);
+  }
+
+  &:focus-visible {
+    box-shadow: var(--focus-shadow);
+    outline: none;
+    outline-offset: 0;
+  }
+
+  &::after {
+    content: "\f107"; /* Font Awesome Unicode for angle-down */
+    font-weight: 900; /* Adjust weight for the icon */
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-muted);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &.menu-open::after {
+    transform: translateY(-50%) rotate(180deg); /* Rotate the icon when menu is open */
+  }
+}

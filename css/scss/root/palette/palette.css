@@ -14,6 +14,7 @@
   --dark-hover: #2a334b;
   --dark-focus: #1b202e;
   --bg-dark: #121722;
+  --bg-overlay: #121722bf;
   --focus-shadow: 0 0 0 4px var(--primary-ghost);
   --primary: #bfc7e5;
   --primary-hover: #d2daef; /* 25% lighter */

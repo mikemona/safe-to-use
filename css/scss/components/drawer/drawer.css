@@ -1,0 +1,98 @@
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-overlay);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  z-index: 1000;
+}
+.drawer-overlay.open {
+  visibility: visible;
+  opacity: 1;
+}
+.drawer-overlay .drawer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 60vh;
+  max-height: 90vh; /* Ensures the drawer cannot grow beyond this */
+  background-color: var(--dark);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -4px 10px var(--bg-overlay);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(100%);
+}
+.drawer-overlay .drawer.open {
+  transform: translateY(0);
+}
+.drawer-overlay .drawer-header {
+  padding: 16px;
+  flex-shrink: 0; /* Prevents the header from shrinking */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.drawer-overlay .drawer-header__title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+.drawer-overlay .drawer-header__close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--primary-ghost);
+  transition: all 0.2s ease-in-out;
+}
+.drawer-overlay .drawer-header__close:hover {
+  color: var(--primary-ghost-hover);
+}
+.drawer-overlay .drawer-body {
+  padding: 16px;
+  flex: 1; /* Allows the body to take up remaining space */
+  overflow-y: auto; /* Enables scrolling if content exceeds available height */
+  font-size: 14px;
+}
+.drawer-overlay .drawer-body .settings-row {
+  padding: 0;
+}
+.drawer-overlay .drawer-body .settings-row:first-of-type {
+  border-radius: 0;
+}
+.drawer-overlay .drawer-body .settings-row:last-of-type {
+  border-bottom: none;
+  border-radius: 0;
+}
+.drawer-overlay .drawer-body .settings-row:last-of-type .settings-row__body {
+  border-bottom: none;
+}
+.drawer-overlay .drawer-body .settings-row:only-of-type {
+  border-radius: 0;
+}
+.drawer-overlay .drawer-body .settings-row__body.settings-row__body--vert {
+  padding: 8px;
+}
+.drawer-overlay .drawer-body .settings-row__body.settings-row__body--vert .settings-row__body-left {
+  padding: 16px 0;
+}
+.drawer-overlay .drawer-body .settings-row__body.settings-row__body--vert .settings-row__body-input {
+  padding: 16px 0;
+}
+.drawer-overlay .drawer-footer {
+  padding: 16px;
+  flex-shrink: 0; /* Prevents the footer from shrinking */
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.drawer-overlay .drawer-footer .btn {
+  width: 100%;
+}/*# sourceMappingURL=drawer.css.map */
