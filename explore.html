@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="css/main.css" media="all" />
+    <script
+      src="https://kit.fontawesome.com/3d4c699bd6.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0-beta.4/dist/tesseract.min.js"></script>
+
+    <title>Ingredient Checker</title>
+  </head>
+  <body class="">
+    <main class="main">
+      <header class="header">
+        <div class="header__left">
+          <!-- <button id="backButton" class="btn btn-link"><i class="fa-solid fa-angle-left"></i></button> -->
+          <div class="header__page-title">Explore</div>
+        </div>
+        <div class="header__right">
+          <button id="notifications" class="btn btn-link">
+            <i class="fa-solid fa-bell"></i>
+          </button>
+          <button id="openDrawer" class="btn btn-link">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <!-- <a href="settings.html" id="menu" class="btn btn-ghost">
+            <i class="fa-solid fa-gear"></i>
+          </a> -->
+        </div>
+      </header>
+      <div class="body">
+        <div class="body__header">
+          <a href="search.html" id="searchBtn" class="btn btn-searchbar">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </a>
+        </div>
+
+        <div class="body__body">
+          <div class="tabs-container">
+            <div class="tabs">
+              <button class="tabs-btn active" data-tabs="all">All</button>
+              <button class="tabs-btn" data-tabs="tab2">Tab 2</button>
+              <button class="tabs-btn" data-tabs="tab3">Tab 3</button>
+            </div>
+            <div class="tabs-content">
+              <div class="tabs-panel active" data-tabs="tab1">
+                <p>This is the content for Tab 1.</p>
+              </div>
+              <div class="tabs-panel" data-tabs="tab2">
+                <p>This is the content for Tab 2.</p>
+              </div>
+              <div class="tabs-panel" data-tabs="tab3">
+                <p>This is the content for Tab 3.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div role="button" class="accordion-item__header">
+            <div class="accordion-item__header-title">Section 1</div>
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+          <div class="accordion-item__content">
+            <p>Content for section 1.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div role="button" class="accordion-item__header">
+            <div class="accordion-item__header-title">
+              Section 2 Has a Much Longer Title
+            </div>
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+          <div class="accordion-item__content">
+            <p>Content for section 1.</p>
+          </div>
+        </div>
+      </div>
+      <div class="nav-container" id="explore"></div>
+    </main>
+    <div class="drawer-overlay" id="drawerOverlay">
+      <div class="drawer" id="drawer">
+        <div class="drawer-header">
+          <h2 class="drawer-header__title">Drawer Title</h2>
+          <button class="drawer-header__close" id="closeDrawer">&times;</button>
+        </div>
+        <div class="drawer-body">
+          <div class="settings-row">
+            <div class="settings-row__body settings-row__body--vert">
+              <div class="settings-row__body-left">
+                <div class="settings-row__body-left_title">Item Two</div>
+                <div class="settings-row__body-left_description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+              </div>
+              <div class="settings-row__body-input">
+                <div class="form-element">
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Default input"
+                    aria-label="default input example"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row__body settings-row__body--vert">
+              <div class="settings-row__body-left">
+                <div class="settings-row__body-left_title">Item Two</div>
+                <div class="settings-row__body-left_description">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </div>
+              </div>
+              <div class="settings-row__body-input">
+                <div class="form-element">
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="drawer-footer">
+          <button class="btn btn-link" id="cancelDrawer">Cancel</button>
+          <button class="btn btn-primary" id="saveDrawer">Save</button>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0/dist/tesseract.min.js"></script>
+  <script src="js/anyalyzer.js"></script>
+  <script src="js/accordion.js"></script>
+  <script src="js/drawer.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/tabs.js"></script>
+</html>

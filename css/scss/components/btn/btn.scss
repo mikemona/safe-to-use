@@ -1,19 +1,20 @@
 .btn {
+  font-family: "Quicksand";
   display: flex;
+  gap: 8px;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  height: 32px;
-  min-width: 32px;
+  height: 40px;
+  min-width: 40px;
   font-size: 0.875rem;
   cursor: pointer;
   border-radius: var(--border-radius);
   padding: 4px 16px;
   border: none;
   transition: width 0.3s ease-in-out, height 0.3s ease-in-out, 0.2s ease-in-out;
-  font-family: "Inter", sans-serif;
 
   &-primary {
+    font-weight: 700;
     background-color: var(--primary);
     color: var(--text-dark);
 
@@ -29,7 +30,25 @@
     }
   }
 
+  &-accent {
+    font-weight: 700;
+    background-color: var(--accent);
+    color: var(--text-dark);
+
+    &:hover {
+      background-color: var(--accent-hover);
+      color: var(--text-dark);
+    }
+
+    &:focus {
+      background-color: var(--accent-focus);
+      color: var(--text-dark);
+      box-shadow: var(--focus-shadow);
+    }
+  }
+
   &-ghost {
+    font-weight: 500;
     background-color: var(--primary-ghost);
     color: var(--text-white);
 
@@ -46,6 +65,7 @@
   }
 
   &-link {
+    font-weight: 600;
     background-color: transparent;
     color: var(--primary);
     padding: 4px 4px;
@@ -58,6 +78,29 @@
       color: var(--primary-focus);
       box-shadow: var(--focus-shadow);
     }
+  }
+
+  &-text {
+    background-color: transparent;
+    color: var(--primary);
+    padding: 0 4px;
+    max-width: fit-content;
+
+    &:hover {
+      color: var(--primary-hover);
+    }
+
+    &:focus {
+      color: var(--primary-focus);
+      box-shadow: var(--focus-shadow);
+    }
+  }
+
+  &-searchbar {
+    font-weight: 300;
+    background-color: var(--primary-ghost);
+    color: var(--text-white);
+    justify-content: flex-start;
   }
 
   &-check {
@@ -124,7 +167,7 @@ a {
   border: 2px solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   animation: spin 0.75s linear infinite;
 }
 

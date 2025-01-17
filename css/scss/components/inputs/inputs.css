@@ -35,7 +35,7 @@ label {
 }
 
 textarea {
-  font-family: "Inter", sans-serif;
+  font-family: "Quicksand", sans-serif;
   width: 100%;
   min-height: 200px;
   border-radius: var(--border-radius);
@@ -103,17 +103,24 @@ textarea:focus-visible {
 }
 
 .form-control {
-  min-height: 32px;
+  min-height: 40px;
   border-radius: var(--border-radius);
   padding: 0 8px;
-  font-family: "Inter", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: 500;
   border: none;
-  background-color: var(--primary);
-  color: var(--text-dark);
+  background-color: var(--primary-ghost);
+  color: var(--white);
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out, 0.2s ease-in-out;
+}
+.form-control::-moz-placeholder {
+  color: var(--text-placeholder);
+}
+.form-control::placeholder {
+  color: var(--text-placeholder);
 }
 .form-control:hover {
-  background-color: var(--primary-hover);
+  background-color: var(--primary-ghost-hover);
 }
 .form-control:focus-visible {
   box-shadow: var(--focus-shadow);
@@ -122,13 +129,20 @@ textarea:focus-visible {
 }
 
 .form-select {
-  min-height: 32px;
+  min-height: 40px;
   border-radius: var(--border-radius);
   padding: 0 8px;
-  font-family: "Inter", sans-serif;
+  font-family: "Quicksand", sans-serif;
   border: none;
   background-color: var(--primary);
   color: var(--text-dark);
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out, 0.2s ease-in-out;
+}
+.form-select::-moz-placeholder {
+  color: var(--text-placeholder);
+}
+.form-select::placeholder {
+  color: var(--text-placeholder);
 }
 .form-select:hover {
   background-color: var(--primary-hover);

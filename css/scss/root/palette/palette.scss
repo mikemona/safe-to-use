@@ -8,6 +8,10 @@ $blue: #3a5ddb;
 $blue-light: lighten($blue, 20%); /* 20% lighter */
 $blue-dark: darken($blue, 20%); /* 20% darker */
 
+$accent: #f68e5f;
+$accent-hover: lighten($accent, 10%); /* 20% lighter */
+$accent-focus: darken($accent, 10%); /* 20% darker */
+
 :root {
   --text-dark: #20273b;
   --text-white: #ffffff;
@@ -19,19 +23,25 @@ $blue-dark: darken($blue, 20%); /* 20% darker */
   --dark: #20273b;
   --dark-hover: #2a334b;
   --dark-focus: #1b202e;
-  --bg-dark: #121722;
-  --bg-overlay: #121722bf;
+  --dark2: #121722;
+  --bg-dark: #0b0f16;
+  --bg-overlay: #0b0f16bf;
   --focus-shadow: 0 0 0 4px var(--primary-ghost);
+  --gradient1: linear-gradient(var(--bg-dark), var(--dark2));
 
   --primary: #bfc7e5;
   --primary-hover: #d2daef; /* 25% lighter */
   --primary-focus: #9ba4c7; /* 25% darker */
 
+  --accent: #{$accent};
+  --accent-hover: #{$accent-hover}; /* 25% lighter */
+  --accent-focus: #{$accent-focus}; /* 25% darker */
+
   --primary-ghost: #3d4459;
   --primary-ghost-hover: #656b7d;
   --primary-ghost-focus: #2b2f3f;
 
-  --yellow: {$yellow};
+  --yellow: #{$yellow};
   --yellow-light: #{$yellow-light};
   --yellow-dark: #{$yellow-dark};
   --red: #962e25;

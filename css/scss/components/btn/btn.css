@@ -1,0 +1,151 @@
+.btn {
+  font-family: "Quicksand";
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-width: 40px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  padding: 4px 16px;
+  border: none;
+  transition: width 0.3s ease-in-out, height 0.3s ease-in-out, 0.2s ease-in-out;
+}
+.btn-primary {
+  font-weight: 700;
+  background-color: var(--primary);
+  color: var(--text-dark);
+}
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  color: var(--text-dark);
+}
+.btn-primary:focus {
+  background-color: var(--primary-focus);
+  color: var(--text-dark);
+  box-shadow: var(--focus-shadow);
+}
+.btn-accent {
+  font-weight: 700;
+  background-color: var(--accent);
+  color: var(--text-dark);
+}
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+  color: var(--text-dark);
+}
+.btn-accent:focus {
+  background-color: var(--accent-focus);
+  color: var(--text-dark);
+  box-shadow: var(--focus-shadow);
+}
+.btn-ghost {
+  font-weight: 500;
+  background-color: var(--primary-ghost);
+  color: var(--text-white);
+}
+.btn-ghost:hover {
+  background-color: var(--primary-ghost-hover);
+  color: var(--text-white);
+}
+.btn-ghost:focus {
+  background-color: var(--primary-ghost-focus);
+  color: var(--text-white);
+  box-shadow: var(--focus-shadow);
+}
+.btn-link {
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--primary);
+  padding: 4px 4px;
+}
+.btn-link:hover {
+  color: var(--primary-hover);
+}
+.btn-link:focus {
+  color: var(--primary-focus);
+  box-shadow: var(--focus-shadow);
+}
+.btn-text {
+  background-color: transparent;
+  color: var(--primary);
+  padding: 0 4px;
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+.btn-text:hover {
+  color: var(--primary-hover);
+}
+.btn-text:focus {
+  color: var(--primary-focus);
+  box-shadow: var(--focus-shadow);
+}
+.btn-searchbar {
+  font-weight: 300;
+  background-color: var(--primary-ghost);
+  color: var(--text-white);
+  justify-content: flex-start;
+}
+.btn-check {
+  display: flex;
+}
+.btn-check input {
+  display: none;
+}
+.btn-check label {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.btn-check label:hover {
+  color: var(--primary);
+  background-color: var(--primary-ghost-hover);
+}
+.btn-check input:checked + label {
+  background-color: var(--primary);
+  color: var(--text-dark);
+}
+.btn-check input:checked + label:hover {
+  background-color: var(--primary-hover);
+  color: var(--text-dark);
+}
+.btn.backBTN {
+  background-color: transparent;
+  color: var(--primary);
+  padding: 4px 2px;
+  min-width: unset !important;
+}
+.btn.backBTN:hover {
+  color: var(--primary-hover);
+}
+.btn.backBTN:focus {
+  color: var(--primary-focus);
+  box-shadow: none;
+}
+
+a {
+  position: relative;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.spinner-border {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 8px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=btn.css.map */

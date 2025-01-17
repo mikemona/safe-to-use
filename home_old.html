@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="css/main.css" media="all" />
+    <script
+      src="https://kit.fontawesome.com/3d4c699bd6.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0-beta.4/dist/tesseract.min.js"></script>
+
+    <title>Ingredient Checker</title>
+  </head>
+  <body class="">
+    <main class="main">
+      <header class="header">
+        <div class="header__left">
+          <!-- <button id="backButton" class="btn btn-link"><i class="fa-solid fa-angle-left"></i></button> -->
+          <div class="header__page-title">SoundStack</div>
+        </div>
+        <div class="header__right">
+          <button id="search" class="btn btn-link">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <a href="settings.html" id="menu" class="btn btn-ghost">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </div>
+      </header>
+      <div class="body">
+        <div class="body__header">
+          <!-- <div class="body__header-title">Ingredient Analyzer</div> -->
+          <div class="body__header-description">
+            this is a test for an ingredient checker
+          </div>
+        </div>
+        <div class="body__form">
+          <div class="form-element required" id="typeIngredients">
+            <label for="ingredientsInput" class="visually-hidden"
+              >Ingredients</label
+            >
+            <textarea
+              id="ingredientsInput"
+              placeholder="Enter ingredients separated by commas"
+            ></textarea>
+            <div class="invalid-feedback">This is a required field</div>
+          </div>
+          <!-- Add a hidden file input for camera capture -->
+          <input
+            type="file"
+            id="cameraInput"
+            accept="image/*"
+            capture="environment"
+            style="display: none"
+          />
+
+          <!-- Preview Container -->
+          <!-- <div id="imagePreviewContainer" class="image-preview__container">
+            <img id="imagePreview" src="" alt="Image Preview" style="max-width: 200px; height: auto;">
+          </div> -->
+
+          <!-- <div class="body__form-actions">
+            <div class="body__form-actions-tools">
+              <button
+                class="btn btn-ghost"
+                data-title="Use Camera"
+                id="useCamera"
+              >
+                <i class="fa-solid fa-camera"></i>
+              </button>
+            </div>
+
+            <div class="body__form-actions-buttons">
+              <button
+                class="btn btn-ghost"
+                data-title="Clear Form"
+                id="clearForm"
+              >
+                <i class="fa-solid fa-rotate-left"></i>
+              </button>
+              <button
+                class="btn btn-primary"
+                data-title="Analyze"
+                id="analyzeText"
+              >
+                Analyze
+              </button>
+            </div>
+          </div> -->
+        </div>
+
+        <!-- No results section -->
+        <div id="noResults"></div>
+
+        <div id="results" class="results">
+          <div class="results__header">
+            <div class="results__header-title">Results</div>
+            <button
+              class="btn btn-link"
+              data-title="Options"
+              id="resultsOptions"
+            >
+              <i class="fa-solid fa-ellipsis"></i>
+            </button>
+          </div>
+          <div class="results__content" id=""></div>
+        </div>
+
+        <!-- <div class="accordion-item">
+          <div role="button" class="accordion-item__header">
+            <div class="accordion-item__header-title">Section 1</div>
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+          <div class="accordion-item__content">
+            <p>Content for section 1.</p>
+          </div>
+        </div>
+        
+        <div class="accordion-item">
+          <div role="button" class="accordion-item__header">
+            <div class="accordion-item__header-title">Section 2 Has a Much Longer Title</div>
+            <i class="fa-solid fa-angle-down"></i>
+          </div>
+          <div class="accordion-item__content">
+            <p>Content for section 1.</p>
+          </div>
+        </div> -->
+      </div>
+      <div id="actions-container"></div>
+    </main>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0/dist/tesseract.min.js"></script>
+  <script src="js/anyalyzer.js"></script>
+  <script src="js/accordion.js"></script>
+  <script src="js/action-bar.js"></script>
+</html>

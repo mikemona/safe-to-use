@@ -1,0 +1,51 @@
+.section {
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+
+    &-title {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 8px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    &-subtitle {
+      color: var(--text-info);
+      font-size: 13px;
+      font-weight: 300;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    &-scrollable {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 16px;
+      .card {
+        width: 90%;
+      }
+    }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+
+      .card-title {
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -1,13 +1,12 @@
 @import "./palette/palette.css";
-@import "../../fonts/_fonts.css";
+@import "../../fonts/fonts.css";
 
 html {
   margin: 0;
-  padding: 108px 0 0 0;
   // overflow-x: hidden;
   background-color: var(--bg-dark);
   color: var(--text-white);
-  font-family: "Inter", sans-serif;
+  font-family: "Quicksand", sans-serif;
   font-weight: 16px;
   line-height: auto;
   overflow-y: scroll; /* Enable scrolling */

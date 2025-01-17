@@ -1,6 +1,6 @@
-@import "./btn/_btn.css";
-@import "./card/_card.css";
-@import "./nav/_nav.css";
+@import "./btn/btn.css";
+@import "./card/card.css";
+@import "./nav/nav.css";
 @import "./checkbox/checkbox.css";
 @import "./inputs/inputs.css";
 @import "./ingredient/_ingredient.css";
@@ -11,4 +11,5 @@
 @import "./settings/settings.css";
 @import "./toast/toast.css";
 @import "./drawer/drawer.css";
-@import "./scroll-bar/scroll-bar.css";/*# sourceMappingURL=components.css.map */
+@import "./scroll-bar/scroll-bar.css";
+@import "./tabs/tabs.css";/*# sourceMappingURL=components.css.map */

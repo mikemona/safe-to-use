@@ -1,0 +1,60 @@
+.tabs-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+
+  &-btn {
+    font-family: "Quicksand";
+    padding: 6px 12px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-white);
+    border-radius: 50px;
+    background-color: var(--primary-ghost);
+
+    &.active {
+      background-color: var(--primary);
+      color: var(--text-dark);
+      font-weight: 700;
+
+      &:hover {
+        background-color: var(--primary-hover);
+      }
+    }
+
+    &:hover {
+      background-color: var(--primary-ghost-hover);
+    }
+  }
+
+  &-content {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &-panel {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateY(20px);
+    padding: 20px;
+    border-radius: 0 0 4px 4px;
+
+    &.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
