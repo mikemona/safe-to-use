@@ -36,10 +36,11 @@
 }
 .body__body-empty_img {
   margin: 0 0 24px;
-}
-.body__body-empty_img i {
   font-size: 72px;
   color: var(--bg-dark);
+  text-shadow: 1px 1px 2px black, 0 0 25px var(--primary-ghost), 0 0 5px var(--primary-ghost);
+}
+.body__body-empty_img--error {
   text-shadow: 1px 1px 2px black, 0 0 25px var(--primary-ghost), 0 0 5px var(--primary-ghost);
 }
 .body__body-empty_title {
